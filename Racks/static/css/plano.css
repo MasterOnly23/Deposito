@@ -1,0 +1,201 @@
+.todo{
+    margin-top: 1.5rem;
+
+}
+
+.fondo{
+    border-color: black;
+    border-style: solid;
+    width: 250px;
+    height: 100px;
+    border-radius: 15px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6d6d3;
+    flex-direction: column;
+    transition: background-color 0.8s ease; 
+
+}
+.plano-abajo{
+    width: 300px;
+}
+
+
+.fila{
+    display: flex;
+    flex-direction: row;
+    gap: 0.3rem;
+}
+
+.rack{
+
+    border-color: black;
+    border-style: solid;
+    height: 550px;
+    width: 55px;
+    margin: 0 0 2.5rem 0rem;
+    border-radius: 15px;
+    background-color: #d6d6d3;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: background-color 0.8s ease; 
+
+}
+.duplex{
+    margin-right: 2.5rem;
+    margin-left: 2.2rem;
+}
+
+.inicio{
+    margin-left: 2.5rem;
+    gap: 3rem;
+}
+
+.fondo h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 0;
+    transition: transform 0.8s ease; 
+}
+.link-cajitas{
+    max-width: fit-content;
+    display: flex;
+    margin: auto;
+    width: 250px;
+}
+
+.rack h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.vencimiento{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 4rem !important;
+    
+}
+
+.row{
+    --bs-gutter-x: 0 !important;
+}
+.col-lg-7{
+    margin: auto;
+}
+
+
+/* nombres */
+.titulo-plano{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 2rem 0 0 0;
+}
+.titulo-plano h5{
+    font-size: 150%;
+    font-weight: bold;
+    margin: 0;
+}
+
+.titulo-cajita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 0;
+}
+.titulo-cajita h5{
+    font-size: 150%;
+    font-weight: bold;
+    margin: 0;
+    transition: transform 0.8s ease; 
+}
+
+
+.rack:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.rack:hover h3{
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}
+
+.fondo:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.fondo:hover h3, .fondo:hover h5{
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}
+
+@media (min-width: 1400px) {
+
+    
+}
+
+
+
+@media (max-width: 1200px){
+    .fondo{
+        width: 85%;
+    }
+    .fondo{
+        width: 250px;
+    }
+    .link-cajitas{
+        max-width: fit-content;
+        display: flex;
+        margin: auto;
+    }
+    .rack{
+        height: 450px;
+        width: 50px;
+        margin: 0 0 1rem 0rem;
+    }
+    .duplex{
+    margin-right: 2rem;
+    margin-left: 2rem;
+    }
+
+    .fila{
+    gap: 1rem;
+    margin-left: 2rem;
+}
+    .inicio{
+        gap: 2.7rem;
+
+    }
+
+    .plano, .vencimiento{
+        display: flex;
+        flex-direction: column !important;
+        width: 90% !important;
+    }
+    .col-lg-7{
+        margin: auto;
+    }
+    .col-12{
+        margin-left: 1rem;
+    }
+    .row{
+        gap: 4rem !important;
+    }
+    .titulo-plano h5{
+        margin: 0;
+    }
+}

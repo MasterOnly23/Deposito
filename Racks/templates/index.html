@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposito</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/dropdowns/">
+    <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+</head>
+<body>
+
+    {% include "cargador.html" %}
+
+    <header>
+        <div class="logo"><a href="#"><img src="{% static 'img/drahorro.png' %}" alt="logo-drahorro"></a></div> 
+        <div class="menu">  
+            <a href=""><ion-icon name="close" class="close"></ion-icon></a>  
+            <ul>  
+                <li><a href="{% url 'index' %}" class="under">INICO</a></li>    
+                <li><a href="{% url 'penetrables' %}" class="under ">PENETRABLES</a></li>  
+                <li><a href="#" class="under">SUPLEMENTOS</a></li>  
+                <li><a href="#" class="under">PSICOTROPICOS</a></li>  
+            </ul>  
+          </div>  
+
+          <div class="search">
+            <label for="buscar">Buscar por:</label>
+            <select id="buscar" name="buscar">
+                <option value="Producto">Producto</option>
+                <option value="Cantidad">Cantidad</option>
+                <option value="Lote">Lote</option>
+                <option value="M">M</option>
+            </select>  
+            <label for="search"></label>
+            <input type="text" placeholder="Buscar..." id="input">  
+              <ion-icon class="s" name="search"></ion-icon>   
+          </div>  
+        
+          <div class="heading">  
+            <ul>  
+              <li><a href="{% url 'index' %}" class="under">INICIO</a></li>    
+              <li><a href="{% url 'penetrables' %}" class="under ">PENETRABLES</a></li>  
+              <li><a href="{% url 'suplementos' %}" class="under">SUPLEMENTOS</a></li>  
+              <li><a href="#" class="under">PSICOTROPICOS</a></li>  
+            </ul>  
+          </div>  
+
+          <div class="heading1">  
+            <ion-icon name="menu" class="ham"></ion-icon>  
+          </div>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+
+        
+    <script src="{% static 'js/header.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> 
+</body>
+</html>

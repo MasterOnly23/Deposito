@@ -1,0 +1,374 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    margin: 1.5rem 0 0 0;
+}
+.titulo h1{
+    margin: 0;
+    color: #16334b;
+    font-weight: bold;
+}
+.titulo span{
+    font-weight: normal;
+    font-size: 75%;
+}
+
+.colores{
+    display: flex;
+    justify-content: flex-start;
+    margin: 0;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 0 0 0 3rem;
+}
+.info-color{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.info-container{
+    justify-content: flex-start;
+}
+
+.suplementos{
+    display: flex;
+    flex-direction: row;
+    margin: 0 0 0 0;
+    gap: 20rem;
+    justify-content: center;
+}
+.suplementos-doble{
+    display: flex;
+    flex-direction: row;
+    gap: 3rem;
+    margin: 0 0 0 0;
+}
+.rack-suplementos{
+    border: 2px solid black;
+    align-items: center;
+    height: 700px;
+    width: 110px;
+    border-radius: 25px;
+    overflow: hidden;
+
+}
+.suplementos-simple{
+    display: flex;
+    flex-direction: row;
+}
+.rack-div1{
+    border-bottom: 3px solid black;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.8s ease; 
+
+}
+.rack-div2{
+    border-bottom: 3px solid black;
+    height: 20%;
+    display: flex;
+    flex-direction: column;  
+    transition: background-color 0.8s ease;  
+}
+.div-sinborde{
+    border-bottom: none;
+}
+.nombre-racks{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 26rem;
+}
+.nombre-dobles{
+    display: flex;
+    flex-direction: row;
+    gap: 8rem;
+}
+.nombre-racks a h3{
+    color: #16334b;
+}
+
+.ocupacion-verde{
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    
+}
+.ocupacion-rojo{
+    width: 15px;
+    height: 15px;
+    background-color: red;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 20px;
+}
+.info h3{
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0 1rem 0;
+    color: #16334b;
+    font-size: 250%;
+    font-weight: bold;
+    transition: transform 0.5s ease-in-out;
+}
+.info p{
+    display: flex;
+    justify-content: center;
+    color: #16334b;
+}
+.ocupacion{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* info-colores */
+.info-container{
+    justify-content: flex-start;
+}
+/* -------- */
+
+.ocupacion p{
+    margin: 0 0 0 5px !important;
+    color: #16334b;
+}
+.rack-div1:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.rack-div1:hover .info h3 {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}
+.rack-div1:hover .info p {
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.8s;
+}
+.rack-div1:hover .ocupacion p {
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.8s;
+}
+
+
+/* rack simple */
+
+.info-div2 h3{
+    margin: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.rack-div2:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.rack-div2:hover .info-div2 h3 {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}
+.rack-div2:hover .info-div2 p {
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.8s;
+}
+.rack-div2:hover .pos2 p {
+    text-decoration: none;
+    color: white;
+    transition-duration: 0.8s;
+}
+
+</style>
+
+<div class="titulo">
+    <h1>Suplementos <span>(S)</span></h1>
+</div>
+
+<div class="colores">
+<div class="info-color">
+    <div class="ocupacion info-container"><div class="ocupacion-verde"></div><p>: Posiciones Disponibles</p></div>
+    <div class="ocupacion info-container"><div class="ocupacion-rojo"></div><p>: Posiciones Ocupadas</p></div>
+</div>
+</div>
+
+
+<div class="col-12">
+
+
+    <div class="suplementos">
+
+        <div class="suplementos-doble">
+            <div class="rack-suplementos">
+                <a href="#" class="link-div1"><div class="rack-div1"><div class="info">
+                    <h3>D</h3>
+                    <p>Ocupacion:</p>
+                    <div class="ocupacion">
+                    <div class="ocupacion-verde"></div><p> : 2</p></div>
+                    <div class="ocupacion">
+                    <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                </div>
+                </div></a>
+                <a href="#"><div class="rack-div1">
+                    <div class="info">
+                        <h3>C</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 1</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 1</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div1">
+                    <div class="info">
+                        <h3>B</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div1 div-sinborde">
+                    <div class="info">
+                        <h3>A</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 0</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 2</p></div>
+                    </div>
+                </div></a>
+        </div>
+            <div class="rack-suplementos">
+                <a href="#"><div class="rack-div1">
+                    <div class="info">
+                        <h3>D</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div1">
+                    <div class="info">
+                        <h3>C</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 0</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 2</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div1">
+                    <div class="info">
+                        <h3>B</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div1 div-sinborde">
+                    <div class="info">
+                        <h3>A</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion">
+                        <div class="ocupacion-verde"></div><p> : 1</p></div>
+                        <div class="ocupacion">
+                        <div class="ocupacion-rojo"></div><p>: 1</p></div>
+                    </div>
+                </div></a>
+            </div>
+        </div>
+
+
+
+        <div class="suplementos-simple">
+            <div class="rack-suplementos">
+                <a href="#"><div class="rack-div2">
+                    <div class="info info-div2">
+                        <h3>E</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div2">
+                    <div class="info info-div2">
+                        <h3>D</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div2">
+                    <div class="info info-div2">
+                        <h3>C</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div2">
+                    <div class="info info-div2">
+                        <h3>B</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+                <a href="#"><div class="rack-div2 div-sinborde">
+                    <div class="info info-div2">
+                        <h3>A</h3>
+                        <p>Ocupacion:</p>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-verde"></div><p> : 2</p></div>
+                        <div class="ocupacion pos2">
+                        <div class="ocupacion-rojo"></div><p>: 0</p></div>
+                    </div>
+                </div></a>
+            </div>
+        </div>
+
+        
+
+    </div>
+    <div class="nombre-racks">
+        <div class="nombre-dobles">
+            <a href="#" class="link-suplementos"><h3>S3</h3></a>
+            <a href="#" class="link-suplementos"><h3>S2</h3></a>
+        </div>
+            <a href="#" class="link-suplementos"><h3>S1</h3></a>
+        
+        </div>
+</div>
+
+
+{% endblock %}
