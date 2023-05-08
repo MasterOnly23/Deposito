@@ -1,0 +1,303 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/suplementos.css' %}">
+
+
+<div class="titulo">
+    <h1>Suplementos <span>(S)</span></h1>
+</div>
+
+<div class="colores">
+<div class="info-color">
+    <div class="ocupacion info-container"><div class="ocupacion-verde"></div><p>: Posiciones Disponibles</p></div>
+    <div class="ocupacion info-container"><div class="ocupacion-rojo"></div><p>: Posiciones Ocupadas</p></div>
+</div>
+</div>
+
+
+<style>
+
+
+    .suplementos-doble{
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin: 0 0 0 0;
+    }
+    .rack-suplementos{
+        /* border-left: 2px solid black; */
+        /* border-right: 2px solid black; */
+        align-items: center;
+        height: 170px;
+        width: 1200px;
+        /* border-radius: 25px; */
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+
+    }
+    .suple-doble{
+        height: 80px; 
+    }
+    .link-caja{
+        display: flex;
+        border-left: 6px double black;
+        border-right: 6px double black;
+        justify-content: center;
+        width: 20%;
+        height: 100%;
+        flex-direction: column;
+    }
+    .link-caja-doble{
+        display: flex;
+        border-left: 6px double black;
+        border-right: 6px double black;
+        justify-content: center;
+        width: 25%;
+        height: 100%;
+        flex-direction: column;
+    }
+    .doble-arriba{
+        border-top: 3px solid black;
+        border-bottom: 2px dotted black;
+    }
+    .doble-abajo{
+        border-bottom: 3px solid black;
+        border-top: 2px dotted black;
+    }
+    .palet-doble{
+        height: 100%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .palet-arriba{
+        border-bottom: 5px double black;
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .palet-abajo{
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .box {
+        width: 50%;
+        height: 100%;
+        border-right: 2px solid black;
+        box-sizing: border-box;
+    }
+
+    /* nombres */
+    .link-caja-doble-nombre{
+        margin-right: 1rem;
+        margin-left: 1rem;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .link-caja-doble-nombre h3{
+        margin: 0;
+        color: #16334b;
+    }
+
+    #nombre-derecha{
+        justify-content: flex-start;
+        width: 9rem;
+    }
+    #nombre-izquierda{
+        justify-content: flex-start;
+        width: 9rem;
+    }
+
+    .color-izquierda-1{
+        background-color: rgba(255, 9, 9, 0.418);
+    }
+    .color-izquierda-0{
+        background-color: rgba(0, 128, 0, 0.4);
+    }
+    
+</style>
+
+<div class="col-12">
+
+    
+    <div class="suplementos">
+        
+
+        <div class="suplementos-doble">
+            
+            <div class="rack-suplementos suple-doble">
+                <div class="link-caja-doble-nombre">
+                    <h3>S3</h3>
+                </div>
+
+                <a href="" class="link-caja-doble doble-arriba">
+                    <div class="palet-doble ">
+                    <div class="box color-izquierda-{{ocupacion1}}"></div>
+                    <div class="box color-izquierda-{{ocupacion2}}"></div>
+                </div>
+                </a>
+                <a href="" class="link-caja-doble doble-arriba">
+
+                    <div class="palet-doble ">
+                    <div class="box color-izquierda-{{ocupacion3}}"></div>
+                    <div class="box color-izquierda-{{ocupacion4}}"></div>
+                    </div>
+
+                </a>
+                <a href="" class="link-caja-doble doble-arriba">
+
+                    <div class="palet-doble ">
+                        <div class="box color-izquierda-{{ocupacion5}}"></div>
+                        <div class="box color-izquierda-{{ocupacion6}}"></div>
+                    </div>
+
+                </a>
+                <a href="" class="link-caja-doble doble-arriba">
+
+                    <div class="palet-doble ">
+                        <div class="box color-izquierda-{{ocupacion7}}"></div>
+                        <div class="box color-izquierda-{{ocupacion8}}"></div>
+                    </div>
+
+                </a>
+                
+                <div class="link-caja-doble-nombre" id="nombre-iquierda">
+                    <h3>Izquierda</h3>
+                </div>
+
+            </div>
+
+            <div class="rack-suplementos suple-doble">
+
+                <div class="link-caja-doble-nombre">
+                    <h3>S2</h3>
+                </div>
+
+                <a href="" class="link-caja-doble doble-abajo">
+                    <div class="palet-doble ">
+                    <div class="box color-derecha-{{ocupacion1}}"></div>
+                    <div class="box color-derecha-{{ocupacion2}}"></div>
+                </div>
+
+                </a>
+                <a href="" class="link-caja-doble doble-abajo">
+
+                    <div class="palet-doble ">
+                    <div class="box color-derecha-{{ocupacion3}}"></div>
+                    <div class="box color-derecha-{{ocupacion4}}"></div>
+                    </div>
+
+                </a>
+                <a href="" class="link-caja-doble doble-abajo">
+
+                    <div class="palet-doble ">
+                        <div class="box color-derecha-{{ocupacion5}}"></div>
+                        <div class="box color-derecha-{{ocupacion6}}"></div>
+                    </div>
+
+                </a>
+                <a href="" class="link-caja-doble doble-abajo">
+
+                    <div class="palet-doble ">
+                        <div class="box color-derecha-{{ocupacion7}}"></div>
+                        <div class="box color-derecha-{{ocupacion8}}"></div>
+                    </div>
+
+                </a>
+                
+                <div class="link-caja-doble-nombre" id="nombre-derecha">
+                    <h3>Derecha</h3>
+                </div>
+                
+            </div>
+
+            
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="rack-suplementos">
+
+            <div class="link-caja-doble-nombre">
+                <h3>S1</h3>
+            </div>
+
+            <a href="" class="link-caja">
+                <div class="palet-arriba ">
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+
+                <div class="palet-abajo">
+                <div class="box"></div>
+                <div class="box"></div>
+                </div>
+            </a>
+            <a href="" class="link-caja">
+
+                <div class="palet-arriba ">
+                <div class="box"></div>
+                <div class="box"></div>
+                </div>
+
+                <div class="palet-abajo">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </a>
+            <a href="" class="link-caja">
+
+                <div class="palet-arriba ">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+
+                <div class="palet-abajo">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </a>
+            <a href="" class="link-caja">
+
+                <div class="palet-arriba ">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+                <div class="palet-abajo">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </a>
+            <a href="" class="link-caja">
+
+                <div class="palet-arriba ">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+                <div class="palet-abajo">
+                    <div class="box"></div>
+                    <div class="box"></div>
+                </div>
+            </a>
+            
+        </div>
+
+    
+    </div>
+
+
+</div>
+
+
+{% endblock %}

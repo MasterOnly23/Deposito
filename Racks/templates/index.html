@@ -10,42 +10,59 @@
     <link href="https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css" rel="stylesheet">  
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <style>
+      @font-face {
+    font-family: "Dr Ahorro"; /* El nombre que deseas dar a la fuente */
+    src: url("{% static 'fuentes/FF_DIN_Pro_Bold_Italic_0.otf' %}"); /* La ruta donde guardaste el archivo de la fuente */
+    }
+    html{
+      font-family: "Dr Ahorro";
+    }
+    </style>
 </head>
 <body>
 
     {% include "cargador.html" %}
 
     <header>
-        <div class="logo"><a href="#"><img src="{% static 'img/drahorro.png' %}" alt="logo-drahorro"></a></div> 
+        <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="logo-drahorro"></a></div> 
         <div class="menu">  
             <a href=""><ion-icon name="close" class="close"></ion-icon></a>  
             <ul>  
                 <li><a href="{% url 'index' %}" class="under">INICO</a></li>    
                 <li><a href="{% url 'penetrables' %}" class="under ">PENETRABLES</a></li>  
-                <li><a href="#" class="under">SUPLEMENTOS</a></li>  
-                <li><a href="#" class="under">PSICOTROPICOS</a></li>  
+                <li><a href="{% url 'suplementos' %}" class="under">SUPLEMENTOS</a></li>  
+                <li><a href="{% url 'psicotropicos' %}" class="under">PSICOTROPICOS</a></li>  
             </ul>  
           </div>  
 
-          <div class="search">
-            <label for="buscar">Buscar por:</label>
-            <select id="buscar" name="buscar">
+          <div class="heading">  
+            <ul> 
+              <li><a href="{% url 'vencimientos' %}" class="under vence">VENCIMIENTOS</a></li>
+            </ul>  
+          </div>   
+
+          <form method="get" action="#">
+            <div class="search">
+              <label for="buscar" class="label-buscar">Buscar por:</label>
+              <select id="buscar" name="opcion">
                 <option value="Producto">Producto</option>
                 <option value="Cantidad">Cantidad</option>
                 <option value="Lote">Lote</option>
                 <option value="M">M</option>
-            </select>  
-            <label for="search"></label>
-            <input type="text" placeholder="Buscar..." id="input">  
-              <ion-icon class="s" name="search"></ion-icon>   
-          </div>  
+              </select>  
+              <label for="search"></label>
+              <input type="text" placeholder="Buscar..." id="input" name="query">  
+              <button type="submit" class="btn-buscar"><ion-icon class="s" name="search"></ion-icon></button>   
+            </div>
+          </form> 
         
           <div class="heading">  
             <ul>  
               <li><a href="{% url 'index' %}" class="under">INICIO</a></li>    
               <li><a href="{% url 'penetrables' %}" class="under ">PENETRABLES</a></li>  
               <li><a href="{% url 'suplementos' %}" class="under">SUPLEMENTOS</a></li>  
-              <li><a href="#" class="under">PSICOTROPICOS</a></li>  
+              <li><a href="{% url 'psicotropicos' %}" class="under">PSICOTROPICOS</a></li>  
             </ul>  
           </div>  
 
@@ -59,7 +76,8 @@
     </main>
 
 
-        
+    <script src="{% static 'js/refresh.js' %}" ></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/header.js' %}" ></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> 

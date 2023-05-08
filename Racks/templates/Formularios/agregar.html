@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/formulario.css' %}">
+
+<div class="container-formulario">
+    <form action="{% url 'guardar_producto' ubicacion=ubicacion %}" method="POST" class="formulario">
+        {% csrf_token %}
+        {{ form|crispy}}
+        <input type="hidden" name="ubicacion" value="{{ ubicacion }}">
+        <div class="d-flex justify-content-center">
+        <button class="btn btn-success btn-guardar" type="submit"><span class="btn-guardar-label">Guardar</span></button>
+        </div>
+    </form>
+    
+  </div>
+
+
+  <!-- incluir los archivos necesarios para select2 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" />
+  <script>
+    // activar select2 en el campo de articulo
+    $(document).ready(function() {
+      $('.codigoCorto').select2();
+      $('.articulo').select2();
+      $('.mueble').select2();
+    });
+  </script>
+
+
+
+
+{% endblock %}
+
+
+

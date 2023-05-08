@@ -1,0 +1,289 @@
+.todo{
+    margin-top: 1rem;
+
+}
+
+.frente{
+    width: 100%;
+}
+
+.fondo{
+    border-color: rgba(0, 0, 0, 0.4);
+    border-style: solid;
+    width: 1000px;
+    height: 100px;
+    /* border-radius: 15px; */
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(128, 128, 128, 0.2);
+    /* background-image: url("../img/penetrables.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center; */
+    flex-direction: column;
+    transition: background-color 0.8s ease; 
+
+}
+.plano-abajo{
+    width: 300px;
+}
+
+
+.fila{
+    display: flex;
+    flex-direction: row;
+    gap: 0.9rem;
+}
+
+.rack{
+    background-image: url("../img/9\ Drogueria\ Dr\ ahorro\ final\ \(2\).svg");
+    background-position: center;
+    background-size: contain;
+    /* border-left: 6px double black;
+    border-right: 6px double black; */
+    height: 550px;
+    width: 55px;
+    margin: 0 0 2rem 0rem;
+    /* border-radius: 15px; */
+    /* background-color: #d6d6d3; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    transition: background-color 0.8s ease; 
+
+}
+.duplex{
+    margin-right: 2.5rem;
+    margin-left: 2rem;
+}
+
+.inicio{
+    margin-left: 2.5rem;
+    gap: 1rem;
+}
+
+.fondo h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(128, 128, 128, 0.7);
+    margin: 0;
+    font-size: 140%;
+    transition: transform 0.8s ease; 
+}
+.link-cajitas{
+    max-width: fit-content;
+    display: flex;
+    margin: auto;
+}
+
+.rack h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 0;
+    transition: transform 0.5s ease-in-out;
+}
+
+.vencimiento{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 4rem !important;
+    
+}
+
+.row{
+    --bs-gutter-x: 0 !important;
+}
+.col-lg-7{
+    margin: auto;
+}
+
+/* lugares del estante */
+
+.rack{
+    flex-direction: column;
+}
+.estante-plano{
+    /* border-left: 6px double black;
+    border-right: 6px double black;
+    border-bottom: 6px double black; */
+    min-width: 90%;
+    height: 11%;
+    
+}
+.estante-sinborde{
+    border-bottom: 0;
+    /* border-left: 0;
+    border-right: 0;
+    background-color: white; */
+}
+/*
+.estante-nombre{
+
+}
+.rack-doble-izq{
+    border-right: 4px dashed  black;
+}
+.rack-doble-der{
+    border-left: 4px dashed  black;
+
+}*/
+
+/* .cuadricula{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+}
+
+.lugar{
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+
+.lugar1 {
+
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+  
+  .lugar2 {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+  
+  .lugar {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  
+  .lugar4 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  } */
+
+
+/* nombres */
+.titulo-plano{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 2rem 0 0 0;
+}
+.titulo-plano h5{
+    font-size: 150%;
+    /* font-weight: bold; */
+    margin: 0;
+    color: rgba(128, 128, 128, 0.7);
+}
+.titulo-plano h5 span{
+    font-weight: bold;
+}
+
+.titulo-cajita{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #16334b;
+    margin: 0 0 1rem 0;
+}
+.titulo-cajita h5{
+    font-size: 150%;
+    font-weight: bold;
+    margin: 0;
+    color: rgba(128, 128, 128, 0.6);
+    transition: transform 0.8s ease; 
+}
+
+.nombre-rack{
+    display: flex;
+    flex-direction: row;
+    gap: 3.2rem;
+    margin-left: 2rem;
+}
+
+/* .rack:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.rack:hover h3{
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}
+*/
+/* .fondo:hover{
+    background-color: #16334b;
+    transition-duration: 0.5s;
+}
+.fondo:hover h3, .fondo:hover h5{
+    color: white;
+    transform: scale(1.5);
+    transition-duration: 0.8s;
+}  */
+
+@media (min-width: 1400px) {
+
+    
+}
+
+
+
+@media (max-width: 1200px){
+    .fondo{
+        width: 85%;
+    }
+    .fondo{
+        width: 250px;
+    }
+    .link-cajitas{
+        max-width: fit-content;
+        display: flex;
+        margin: auto;
+    }
+    .rack{
+        height: 450px;
+        width: 50px;
+        margin: 0 0 1rem 0rem;
+    }
+    .duplex{
+    margin-right: 2rem;
+    margin-left: 2rem;
+    }
+
+    .fila{
+    gap: 1rem;
+    margin-left: 2rem;
+}
+    .inicio{
+        gap: 2.7rem;
+
+    }
+
+    .plano, .vencimiento{
+        display: flex;
+        flex-direction: column !important;
+        width: 90% !important;
+    }
+    .col-lg-7{
+        margin: auto;
+    }
+    .col-12{
+        margin-left: 1rem;
+    }
+    .row{
+        gap: 4rem !important;
+    }
+    .titulo-plano h5{
+        margin: 0;
+    }
+}

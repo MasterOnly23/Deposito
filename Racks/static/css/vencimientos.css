@@ -1,0 +1,15 @@
+.vencimientos{
+    font-family: "Dr Ahorro";
+    
+}
+.tabla-titulo{
+    font-size: 150%;
+    font-weight: bold;
+    
+}
+th, td{
+    color: #16334b;
+}
+.ver-mas a{
+    color: #6B809B !important;
+}

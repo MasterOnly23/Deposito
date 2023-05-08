@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .container{
+        min-width: 95vw;
+        min-height: 95vh;
+    }
+    .container{
+        background-image: url(../static/img/plano.svg);
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    #prueba {fill:red !important;
+        background-color: aqua;
+        stroke: aqua;  
+    }
+</style>
+
+<div class="container">
+    <table style="display: flex; justify-content: center;">
+        <tr>
+          <th>Nombre</th>
+          <th>Edad</th>
+        </tr>
+        <tr>
+          <td>Juan</td>
+          <td>25</td>
+        </tr>
+        <tr>
+          <td>María</td>
+          <td>30</td>
+        </tr>
+      </table>
+</div>
+
+{% endblock %}

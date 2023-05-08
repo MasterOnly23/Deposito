@@ -1,0 +1,62 @@
+{% extends "index.html" %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/vencimientos.css' %}">
+<div class="vencimientos">
+<div class="alert alert-primary" style="background-color: rgba(128,128,128,0.08); width: 100%; margin-right: 2rem;" role="alert">
+            
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th scope="row" colspan="7" class="text-center tabla-titulo">Proximos Vencimientos</th>
+            </tr>
+            <tr>
+                <th scope="col" class="text-center">Producto</th>
+                <th scope="col" class="text-center">Codigo</th>
+                <th scope="col" class="text-center">Fecha de Vencimiento</th>
+                <th scope="col" class="text-center">Lote</th>
+                <th scope="col" class="text-center">Cantidad</th>
+                <th scope="col" class="text-center">Mueble</th>
+                <th scope="col" class="text-center">Ubicacion</th>
+                
+>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for producto in productos %}
+
+            <tr>
+                <td>{{ producto.articulo}}</td>
+                <td>{{ producto.codigo }}</td>
+                <td>{{ producto.fecha_vencimiento }}</td>
+                <td>{{ producto.lote }}</td>
+                <td>{{ producto.cantidad }}</td>
+                <td>{{ producto.mueble }}</td>
+                {% if producto.ubicacionF.ubicacion %}
+                    <td>{{ producto.ubicacionF.ubicacion }}</td>
+                {% elif producto.ubicacionE.ubicacion %}
+                    <td>{{ producto.ubicacionE.ubicacion }}</td>
+                {% elif producto.ubicacionP.ubicacion %}
+                    <td>{{ producto.ubicacionP.ubicacion }}</td>
+                {% elif producto.ubicacionS.ubicacion %}
+                    <td>{{ producto.ubicacionS.ubicacion }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+    </tbody>
+    <hr>
+</table>
+{% if productos|length > 6 %}
+<div class="ver-mas d-flex justify-content-center">
+    <a href="{% url 'vencimientos_todos' %}">Ver Todos...</a>
+</div>
+{% endif %}
+</div>
+</div>
+{% endblock %}

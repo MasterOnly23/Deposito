@@ -15,10 +15,35 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Racks.views import index, penetrables, suplementos
+from django.conf import settings
+from django.conf.urls.static import static
+from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
 
 urlpatterns = [
     path('', index, name='index'),
-    path('penetrables/', penetrables, name='penetrables'),
-    path('suplementos/', suplementos, name='suplementos'),
-]
+    path('vencimientos/', vencimientos, name='vencimientos'),
+    path('vencimientos/todos/', vencimientosTodos, name='vencimientos_todos'),
+    path('estantes/', Estantes.estantes, name='estantes'),
+    path('penetrables/', Penetrables.penetrables, name='penetrables'),
+    path('suplementos/', Suplementos.suplementos, name='suplementos'),
+    path('psicotropicos/', Psicotropicos.psicotropicos, name='psicotropicos'),
+
+    #Estantes
+    path('estantes/E1/', Estantes.E1, name='E1'),
+    path('estantes/E2/', Estantes.E2, name='E2'),
+    path('estantes/E3/', Estantes.E3, name='E3'),
+    path('estantes/E4/', Estantes.E4, name='E4'),
+    path('estantes/E5/', Estantes.E5, name='E5'),
+    path('estantes/E6/', Estantes.E6, name='E6'),
+
+    #pallets
+    path('pallet/<str:ubicacion>/', pallet, name='pallet'),
+
+
+    path('agregar/<str:ubicacion>/', nuevo_producto, name='nuevo_producto'),
+    path('guardar/<str:ubicacion>/', guardar_producto, name='guardar_producto'),
+
+
+
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

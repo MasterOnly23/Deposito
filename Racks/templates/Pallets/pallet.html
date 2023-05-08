@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/pallets.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+{% if productos %}
+
+
+<div class="d-flex flex-start contenedor-agregar">
+    <a href="{% url 'nuevo_producto' ubicacion=ubicacion %}" class="btn btn-success link-agregar text-center d-flex justify-content-center align-items-center"><span id="agregar-text">Agregar Nuevo</span> </a>
+</div>
+<div class="col-11">
+    <div class="row contenedor">
+
+{% for producto in productos %}
+
+<div class="card" style="width: 18rem;">
+    <div class="imagen">
+    <img src="{{producto.imagen.url}}" class="card-img-top" alt="pallet">
+    </div>
+    <div class="card-body contenedor-titulo">
+      <h5 class="card-title">{{ producto.articulo|upper }}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Fecha de Vencimiento: {{ producto.fecha_vencimiento }}</li>
+      <li class="list-group-item">Cantidad: {{ producto.cantidad }}</li>
+      <li class="list-group-item">Lote: {{ producto.lote }}</li>
+      <li class="list-group-item">Ubicacion: {{ ubicacion }}</li>
+    </ul>
+    <div class="card-body botones">
+       <a href="#"><button type="button" class="btn btn-warning">Editar</button></a>
+       <a href="#"><button type="button" class="btn btn-danger">Eliminar</button></a>
+    </div>
+  </div>
+
+{% endfor %}
+</div>
+</div>
+
+{% else %}
+
+<div class="contenedor-nuevo col-12">
+<a href="{% url 'nuevo_producto' ubicacion=ubicacion %}" class="btn btn-success link-agregar btn-vacio text-center d-flex justify-content-center align-items-center"><span id="agregar-text">Agregar Nuevo</span> </a>
+</div>
+
+
+{% endif %}
+
+
+
+{% endblock %}

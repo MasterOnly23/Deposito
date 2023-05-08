@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-41ng^y7bzh&i)kp84r=k^pakj%t))qyj6w^pnj68v5+n8xf(gn'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -39,9 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    #crispy
+    'crispy_forms',
+    'crispy_bootstrap4',
     #APPS
     'Racks.apps.RacksConfig', 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -80,10 +86,10 @@ WSGI_APPLICATION = 'ProyectoDeposito.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
-        'NAME': 'Racks_Deposito',
-        'USER': 'sa',
-        'PASSWORD': 'SA2005',
-        'HOST': 'srvsql03',
+        'NAME': config('NAME_DB'),
+        'USER': config('USER_DB'),
+        'PASSWORD': config('PASS_DB'),
+        'HOST': config('HOST_DB'),
         'PORT': '1433',
         'OPTIONS': {
             'driver': 'ODBC Driver 13 for SQL Server',
@@ -91,6 +97,12 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -131,8 +143,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 #Media
-MEDIA_URL = 'media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

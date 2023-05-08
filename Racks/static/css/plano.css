@@ -1,5 +1,5 @@
 .todo{
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 
 }
 
@@ -7,7 +7,7 @@
     border-color: black;
     border-style: solid;
     width: 250px;
-    height: 100px;
+    height: 90px;
     border-radius: 15px;
     margin: auto;
     display: flex;
@@ -31,12 +31,12 @@
 
 .rack{
 
-    border-color: black;
-    border-style: solid;
+    /* border-left: 6px double black;
+    border-right: 6px double black; */
     height: 550px;
     width: 55px;
-    margin: 0 0 2.5rem 0rem;
-    border-radius: 15px;
+    margin: 0 0 2rem 0rem;
+    /* border-radius: 15px; */
     background-color: #d6d6d3;
     justify-content: center;
     align-items: center;
@@ -93,6 +93,70 @@
     margin: auto;
 }
 
+/* lugares del estante */
+
+.rack{
+    flex-direction: column;
+}
+.estante-plano{
+    border-left: 6px double black;
+    border-right: 6px double black;
+    border-bottom: 6px double black;
+    min-width: 100%;
+    height: 11%;
+    
+}
+.estante-sinborde{
+    border-bottom: 0;
+    /* border-left: 0;
+    border-right: 0;
+    background-color: white; */
+}
+
+.rack-doble-izq{
+    border-right: 4px dashed  black;
+}
+.rack-doble-der{
+    border-left: 4px dashed  black;
+
+}
+
+/* .cuadricula{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1px;
+}
+
+.lugar{
+    border: 1px solid black;
+    text-align: center;
+    padding: 20px;
+    font-size: 20px;
+}
+
+
+.lugar1 {
+
+    grid-row: 1 / 2;
+    grid-column: 1 / 2;
+  }
+  
+  .lugar2 {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+  }
+  
+  .lugar {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+  
+  .lugar4 {
+    grid-row: 2 / 3;
+    grid-column: 2 / 3;
+  } */
+
 
 /* nombres */
 .titulo-plano{
@@ -122,8 +186,14 @@
     transition: transform 0.8s ease; 
 }
 
+.nombre-rack{
+    display: flex;
+    flex-direction: row;
+    gap: 3.2rem;
+    margin-left: 2rem;
+}
 
-.rack:hover{
+/* .rack:hover{
     background-color: #16334b;
     transition-duration: 0.5s;
 }
@@ -132,7 +202,7 @@
     transform: scale(1.5);
     transition-duration: 0.8s;
 }
-
+*/
 .fondo:hover{
     background-color: #16334b;
     transition-duration: 0.5s;
@@ -141,7 +211,7 @@
     color: white;
     transform: scale(1.5);
     transition-duration: 0.8s;
-}
+} 
 
 @media (min-width: 1400px) {
 
