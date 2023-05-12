@@ -27,7 +27,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.0.74','127.0.0.1']
 
 
 # Application definition
@@ -45,6 +45,10 @@ INSTALLED_APPS = [
     'crispy_bootstrap4',
     #APPS
     'Racks.apps.RacksConfig', 
+
+    #autocomplete
+    'dal',
+    'dal_select2',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

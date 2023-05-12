@@ -2,19 +2,26 @@
 {% load static %}
 
 {% block content %}
+
 <link rel="stylesheet" href="{% static 'css/pallets.css' %}">
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-{% if productos %}
 
+<link rel="stylesheet" href="{% static 'css/busqueda.css' %}">
 
-<div class="d-flex flex-start contenedor-agregar">
-  <h2 class="texto-ubicacion">Ubicacion {{ubicacion}}</h2>
-    <a href="{% url 'nuevo_producto' ubicacion=ubicacion %}" class="btn btn-success link-agregar text-center d-flex justify-content-center align-items-center"><span id="agregar-text">Agregar Nuevo</span> </a>
-</div>
+{% if messages %}
+        {% for message in messages %}
+          <div class="notification {{ message.tags }}" id="usuario">
+            {{ message|upper }}
+          </div>
+        {% endfor %}
+        {% endif %}
+
+{% if articulos %}
 <div class="col-11">
     <div class="row contenedor">
 
-{% for producto in productos %}
+
+
+{% for articulo in articulos %}
 
 <div class="card" style="width: 18rem;">
     <div class="imagen">
@@ -40,15 +47,9 @@
 </div>
 
 {% else %}
-
-<div class="contenedor-nuevo col-12">
-  <h2 class="texto-ubicacion">Ubicacion {{ubicacion}}</h2>
-<a href="{% url 'nuevo_producto' ubicacion=ubicacion %}" class="btn btn-success link-agregar btn-vacio text-center d-flex justify-content-center align-items-center"><span id="agregar-text">Agregar Nuevo</span> </a>
-</div>
-
+<div class="notification warning" id="usuario">
+    <p>Sin Resultados</p>
+  </div>
 
 {% endif %}
-
-
-
 {% endblock %}

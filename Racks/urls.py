@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
+from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos,buscar, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
 
 urlpatterns = [
     path('', index, name='index'),
+    path('busqueda/', buscar, name='buscar'),
     path('vencimientos/', vencimientos, name='vencimientos'),
     path('vencimientos/todos/', vencimientosTodos, name='vencimientos_todos'),
     path('estantes/', Estantes.estantes, name='estantes'),
@@ -35,6 +36,25 @@ urlpatterns = [
     path('estantes/E4/', Estantes.E4, name='E4'),
     path('estantes/E5/', Estantes.E5, name='E5'),
     path('estantes/E6/', Estantes.E6, name='E6'),
+    path('estantes/E7/', Estantes.E7, name='E7'),
+    path('estantes/E8/', Estantes.E8, name='E8'),
+    path('estantes/E9/', Estantes.E9, name='E9'),
+    path('estantes/E10/', Estantes.E10, name='E10'),
+
+    #Penetrables
+    path('penetrable/F1/', Penetrables.F1, name='F1'), 
+    path('penetrable/F2/', Penetrables.F2, name='F2'),
+    path('penetrable/F3/', Penetrables.F3, name='F3'),
+    path('penetrable/F4/', Penetrables.F4, name='F4'),
+    path('penetrable/F5/', Penetrables.F5, name='F5'),
+    path('penetrable/F6/', Penetrables.F6, name='F6'),
+    path('penetrable/F7/', Penetrables.F7, name='F7'),
+    path('penetrable/F8/', Penetrables.F8, name='F8'),
+    path('penetrable/F9/', Penetrables.F9, name='F9'),
+    path('penetrable/F10/', Penetrables.F10, name='F10'),
+    path('penetrable/F11/', Penetrables.F11, name='F11'),
+    path('penetrable/F12/', Penetrables.F12, name='F12'),
+    
 
     #pallets
     path('pallet/<str:ubicacion>/', pallet, name='pallet'),

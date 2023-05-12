@@ -1,9 +1,10 @@
 var idleTime = 0;
-$(document).ready(function () {
-    //Increment the idle time counter every minute.
-    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
 
-    //Zero the idle timer on mouse movement.
+$(document).ready(function () {
+    // Incrementar el contador de tiempo inactivo cada minuto.
+    var idleInterval = setInterval(timerIncrement, 60000); // 1 minuto
+
+    // Reiniciar el contador de tiempo inactivo al mover el mouse o presionar una tecla.
     $(this).mousemove(function (e) {
         idleTime = 0;
     });
@@ -13,9 +14,9 @@ $(document).ready(function () {
 });
 
 function timerIncrement() {
-    idleTime = idleTime + 1;
-    if (idleTime > 30) { // 30 minutes
+    idleTime += 1;
+    if (idleTime >= 2) { // 2 minutos de inactividad
         // Redirigir o recargar la página actual
-        location.reload(true); 
+        location.reload(true);
     }
 }

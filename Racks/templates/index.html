@@ -19,6 +19,7 @@
       font-family: "Dr Ahorro";
     }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -42,14 +43,14 @@
             </ul>  
           </div>   
 
-          <form method="get" action="#">
+          <form method="get" action="{% url 'buscar' %}">
             <div class="search">
               <label for="buscar" class="label-buscar">Buscar por:</label>
               <select id="buscar" name="opcion">
                 <option value="Producto">Producto</option>
                 <option value="Cantidad">Cantidad</option>
                 <option value="Lote">Lote</option>
-                <option value="M">M</option>
+                <option value="Mueble">Mueble</option>
               </select>  
               <label for="search"></label>
               <input type="text" placeholder="Buscar..." id="input" name="query">  
@@ -69,6 +70,7 @@
           <div class="heading1">  
             <ion-icon name="menu" class="ham"></ion-icon>  
           </div>
+          
     </header>
 
     <main>
@@ -76,10 +78,35 @@
     </main>
 
 
-    <script src="{% static 'js/refresh.js' %}" ></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script src="{% static 'js/header.js' %}" ></script>
     <script src="{% static 'js/bootstrap.bundle.js' %}"></script>
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script> 
+    <script >
+      var idleTime = 0;
+  
+  $(document).ready(function () {
+      // Incrementar el contador de tiempo inactivo cada minuto.
+      var idleInterval = setInterval(timerIncrement, 60000); // 1 minuto
+  
+      // Reiniciar el contador de tiempo inactivo al mover el mouse o presionar una tecla.
+      $(this).mousemove(function (e) {
+          idleTime = 0;
+      });
+      $(this).keypress(function (e) {
+          idleTime = 0;
+      });
+  });
+  
+  function timerIncrement() {
+      idleTime += 1;
+      if (idleTime >= 20) { // 2 minutos de inactividad
+          // Redirigir o recargar la página actual
+          window.location.href = "{% url 'index' %}"
+      }
+  }
+  
+  </script>
+    
 </body>
 </html>

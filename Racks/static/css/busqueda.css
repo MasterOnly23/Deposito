@@ -1,0 +1,24 @@
+    /*Notifications*/
+.notification {
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 1.8rem;
+        background: #007E33;
+        font-family: "Dr Ahorro";
+      }
+.success {
+        background: #43DC7E;
+        color: white;
+      }
+.error {
+        background: #AB3444;
+        color: white;
+        margin-bottom: 20px;
+      }
+.warning {
+        background:  #ffcc0065;
+        color: white;
+        margin-bottom: 20px;
+      }

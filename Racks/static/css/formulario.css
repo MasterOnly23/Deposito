@@ -12,10 +12,13 @@
     font-family: "Dr Ahorro";
 
 }
+#id_articulo, #id_codigoCorto, #id_mueble{
+    margin: 0 !important;
+}
 .formulario{
     margin: 0 2rem 0 2rem;
     width: 32rem;
-    height: 50rem;
+    height: 45rem;
 }
 .select2-search__field{
     margin: 0 !important;

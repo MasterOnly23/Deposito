@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from datetime import datetime
 
 from django.http import JsonResponse
 
@@ -16,6 +17,8 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+
+from django.contrib import messages
 # Create your views here.
 
 
@@ -52,6 +55,43 @@ def index(request):
 
 
     return render(request, 'planoP2.html', ubicaciones)
+
+
+def buscar(request):
+
+    opcion = request.GET.get("opcion")
+    query = request.GET.get("query")
+
+    try:
+        if opcion and query:
+            if opcion == "Producto":
+                articulo = Productos.objects.filter(articulo__icontains=query).distinct().order_by("articulo")
+                return render(request, 'busqueda.html', {"articulos":articulo})
+            
+            elif opcion == "Cantidad":
+                articulo = Productos.objects.filter(cantidad__icontains=query).distinct().order_by("-cantidad")
+                return render(request, 'busqueda.html', {"articulos":articulo})
+            
+            elif opcion == "Lote":
+                articulo = Productos.objects.filter(lote__icontains=query).distinct().order_by("articulo")
+                return render(request, 'busqueda.html', {"articulos":articulo})
+            
+            elif opcion == "Mueble":
+                articulo = Productos.objects.filter(mueble__icontains=query).distinct().order_by("articulo")
+                return render(request, 'busqueda.html', {"articulos":articulo})
+            
+        else:
+            messages.warning(request, "Sin Resultados")
+            return render(request, 'busqueda.html')
+
+
+    
+    except Exception as e:
+        logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
+        logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
+        with open (logErrorFile, 'a') as log_file:
+            log_file.write("Ha ocurrido un error con la búsqueda index: " + str(e))
+        
 
 
 
@@ -164,7 +204,7 @@ class Estantes:
 class Penetrables:
 
     def penetrables(request):
-        penetrables = Suplementos.objects.all()
+        penetrables = Penetrable.objects.all()
         ubicacionesPenetrables = {}
 
         for penetrable in penetrables:
@@ -174,7 +214,7 @@ class Penetrables:
         return render(request, 'Penetrables/penetrables.html', ubicaciones)
 
     def F1(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F1')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F1')
         ubicacionesF1 = {}
         for pallet in pallets:
             ubicacionesF1[pallet.ubicacion] = pallet.ocupacion
@@ -183,7 +223,7 @@ class Penetrables:
         return render(request, 'Penetrables/F1.html', contexto)
     
     def F2(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F2')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F2')
         ubicacionesF2 = {}
         for pallet in pallets:
             ubicacionesF2[pallet.ubicacion] = pallet.ocupacion
@@ -192,7 +232,7 @@ class Penetrables:
         return render(request, 'Penetrables/F2.html', contexto)
     
     def F3(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F3')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F3')
         ubicacionesF3 = {}
         for pallet in pallets:
             ubicacionesF3[pallet.ubicacion] = pallet.ocupacion
@@ -201,7 +241,7 @@ class Penetrables:
         return render(request, 'Penetrables/F3.html', contexto)
     
     def F4(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F4')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F4')
         ubicacionesF4 = {}
         for pallet in pallets:
             ubicacionesF4[pallet.ubicacion] = pallet.ocupacion
@@ -210,7 +250,7 @@ class Penetrables:
         return render(request, 'Penetrables/F4.html', contexto)
     
     def F5(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F5')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F5')
         ubicacionesF5 = {}
         for pallet in pallets:
             ubicacionesF5[pallet.ubicacion] = pallet.ocupacion
@@ -219,7 +259,7 @@ class Penetrables:
         return render(request, 'Penetrables/F5.html', contexto)
     
     def F6(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F6')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F6')
         ubicacionesF6 = {}
         for pallet in pallets:
             ubicacionesF6[pallet.ubicacion] = pallet.ocupacion
@@ -228,7 +268,7 @@ class Penetrables:
         return render(request, 'Penetrables/F6.html', contexto)
     
     def F7(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F7')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F7')
         ubicacionesF7 = {}
         for pallet in pallets:
             ubicacionesF7[pallet.ubicacion] = pallet.ocupacion
@@ -237,7 +277,7 @@ class Penetrables:
         return render(request, 'Penetrables/F7.html', contexto)
     
     def F8(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F8')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F8')
         ubicacionesF8 = {}
         for pallet in pallets:
             ubicacionesF8[pallet.ubicacion] = pallet.ocupacion
@@ -246,7 +286,7 @@ class Penetrables:
         return render(request, 'Penetrables/F8.html', contexto)
     
     def F9(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F9')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F9')
         ubicacionesF9 = {}
         for pallet in pallets:
             ubicacionesF9[pallet.ubicacion] = pallet.ocupacion
@@ -255,7 +295,7 @@ class Penetrables:
         return render(request, 'Penetrables/F9.html', contexto)
     
     def F10(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F10')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F10')
         ubicacionesF10 = {}
         for pallet in pallets:
             ubicacionesF10[pallet.ubicacion] = pallet.ocupacion
@@ -264,7 +304,7 @@ class Penetrables:
         return render(request, 'Penetrables/F10.html', contexto)
     
     def F11(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F11')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F11')
         ubicacionesF11 = {}
         for pallet in pallets:
             ubicacionesF11[pallet.ubicacion] = pallet.ocupacion
@@ -273,7 +313,7 @@ class Penetrables:
         return render(request, 'Penetrables/F11.html', contexto)
     
     def F12(request):
-        pallets = Penetrables.objects.filter(ubicacion__startswith='F12')
+        pallets = Penetrable.objects.filter(ubicacion__startswith='F12')
         ubicacionesF12 = {}
         for pallet in pallets:
             ubicacionesF12[pallet.ubicacion] = pallet.ocupacion
@@ -285,7 +325,7 @@ class Penetrables:
 class Suplementos:
 
     def suplementos(request):
-        suplementos = Suplementos.objects.all()
+        suplementos = Suplemento.objects.all()
         ubicacionesSuplementos = {}
 
         for suplemento in suplementos:
@@ -296,7 +336,7 @@ class Suplementos:
     
     
     def S1(request):
-        pallets = Suplementos.objects.filter(ubicacion__startswith='S1')
+        pallets = Suplemento.objects.filter(ubicacion__startswith='S1')
         ubicacionesS1 = {}
         for pallet in pallets:
             ubicacionesS1[pallet.ubicacion] = pallet.ocupacion
@@ -305,7 +345,7 @@ class Suplementos:
         return render(request, 'Suplementos/S1.html', contexto)
     
     def S2(request):
-        pallets = Suplementos.objects.filter(ubicacion__startswith='S2')
+        pallets = Suplemento.objects.filter(ubicacion__startswith='S2')
         ubicacionesS2 = {}
         for pallet in pallets:
             ubicacionesS2[pallet.ubicacion] = pallet.ocupacion
@@ -317,18 +357,18 @@ class Suplementos:
 class Psicotropicos:
 
     def psicotropicos(request):
-        psicotropicos = Psicotropicos.objects.all()
+        psicotropicos = Psicotropico.objects.all()
         ubicacionesPsicotropicos = {}
 
         for psicotropico in psicotropicos:
             ubicacionesPsicotropicos[psicotropico.ubicacion] = psicotropico.ocupacion
         ubicaciones = {'ubicacionesPsicotropicos':ubicacionesPsicotropicos}
 
-        return render(request, 'Psicotropicos/suplementos.html', ubicaciones)
+        return render(request, 'Psicotropicos/psicotropicos.html', ubicaciones)
     
     
     def P1(request):
-        pallets = Psicotropicos.objects.filter(ubicacion__startswith='P1')
+        pallets = Psicotropico.objects.filter(ubicacion__startswith='P1')
         ubicacionesP1 = {}
         for pallet in pallets:
             ubicacionesP1[pallet.ubicacion] = pallet.ocupacion
@@ -337,7 +377,7 @@ class Psicotropicos:
         return render(request, 'Estantes/P1.html', contexto)
     
     def P2(request):
-        pallets = Psicotropicos.objects.filter(ubicacion__startswith='P2')
+        pallets = Psicotropico.objects.filter(ubicacion__startswith='P2')
         ubicacionesP2 = {}
         for pallet in pallets:
             ubicacionesP2[pallet.ubicacion] = pallet.ocupacion
@@ -384,4 +424,6 @@ def vencimientosTodos(request):
     productos = Productos.objects.all().order_by('-fecha_vencimiento')
 
     return render(request, 'vencimientos2.html', {'productos':productos})
+
+
 

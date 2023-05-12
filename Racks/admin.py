@@ -5,9 +5,11 @@ from Racks.models import *
 
 class ArticulosAdmin(admin.ModelAdmin):
     list_display=['articulo']
+    search_fields = [ 'articulo']
 
 class CodigoAdmin(admin.ModelAdmin):
     list_display=['codigo']
+    search_fields = [ 'codigo']
 
 class ProductosAdmin(admin.ModelAdmin):
     list_display=['articulo','codigo','fecha_vencimiento','lote','cantidad','mueble','fecha_modificacion','ubicacionF','ubicacionS','ubicacionP','ubicacionE']

@@ -19,10 +19,12 @@ class ProductosForm(forms.ModelForm):
             ('M2','M2'),
             ('M3','M3'),
             ('M4','M4'),
-            ('ACC','ACC'))
+            ('ACC','ACC'),
+            ('SUP','SUP'),
+            ('PSI','PSI'))
 
-    codigo = forms.ModelChoiceField(queryset=Codigo.objects.all(), widget=Select2Widget(attrs={'class': 'select2 select-codigo'}), label='Codigo')
-    articulo = forms.ModelChoiceField(queryset=Articulo.objects.all(), widget=Select2Widget(attrs={'class': 'select2'}), label='Articulo')
+    # codigo = forms.ModelChoiceField(queryset=Codigo.objects.all().order_by('codigo'), widget=Select2Widget(attrs={'class': 'select2 select-codigo'}), label='Codigo')
+    articulo = forms.ModelChoiceField(queryset=Articulo.objects.all().order_by('articulo'), widget=Select2Widget(attrs={'class': 'select2'}), label='Articulo')
     fecha_vencimiento = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     lote = forms.CharField(max_length=20)
     cantidad = forms.IntegerField()
@@ -33,11 +35,11 @@ class ProductosForm(forms.ModelForm):
 
     class Meta:
         model = Productos
-        fields = ['codigo','articulo', 'fecha_vencimiento', 'lote', 'cantidad', 'mueble', 'ubicacion']
+        fields = ['articulo', 'fecha_vencimiento', 'lote', 'cantidad', 'mueble', 'ubicacion']
 
     def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)
-            self.fields['codigo'].widget.attrs.update({'class':'codigoCorto', 'id':'id_codigoCorto'})
+            # self.fields['codigo'].widget.attrs.update({'class':'codigoCorto', 'id':'id_codigoCorto'})
             self.fields['articulo'].widget.attrs.update({'class':'articulo', 'id':'id_articulo'})
             self.fields['fecha_vencimiento'].widget.attrs.update({'class':'fechaVencimiento', 'id':'id_fechaVencimiento'})
             self.fields['lote'].widget.attrs.update({'class':'lote', 'id':'id_lote'})

@@ -101,6 +101,7 @@ class Productos(models.Model):
         verbose_name_plural = "Productos"
 
 class Articulo(models.Model):
+    codigo = models.CharField(max_length=5, null=True)
     articulo = models.CharField(max_length=60, null=False)
 
 
@@ -109,7 +110,7 @@ class Articulo(models.Model):
 
 
     def __str__(self):
-        return self.articulo
+        return f"{self.codigo} -- {self.articulo}"
     
 
 class Codigo(models.Model):
