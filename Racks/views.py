@@ -29,6 +29,8 @@ from django.utils.html import strip_tags
 from Racks.models import Productos, UltimaEjecucion
 from django.conf import settings
 from django.utils import timezone
+
+from decouple import config
 # Create your views here.
 
 
@@ -54,11 +56,11 @@ def mailVencimientos(request):
             subject = "!IMPORTANTE! Vecimientos Proximos"
             html_message = render_to_string('vencimientosMail.html', {'productos':productos})
             plain_message = render_to_string('vencimientosMail.html', {'productos':productos})
-            from_email = 'pruebacomprasinternas@gmail.com'
-            abastecimiento = 'abastecimiento@farmaciasdrahorro.com.ar'
-            compras =  'compras@farmaciasdrahorro.com.ar'
+            from_email =  config('USER_MAIL')
+            abastecimiento = config('MAIL_ABASTECIMIENTO')
+            compras =  config('MAIL_COMPRAS')
 
-            send_mail(subject, plain_message, from_email, ['pruebacomprasinternas@gmail.com'], html_message=html_message)
+            send_mail(subject, plain_message, from_email, [from_email], html_message=html_message)
             # Registrar la ejecución exitosa en la base de datos
             UltimaEjecucion.objects.create(ultimaEjecucion=today)
     
