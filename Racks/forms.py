@@ -6,12 +6,7 @@ from datetime import datetime
 
 
 
-# class ProductosCodigoForm(forms.ModelForm):
-#     codigo = forms.CharField(max_length=4)
 
-#     class Meta:
-#         model = Productos
-#         fields = ['codigo']
 
 class ProductosForm(forms.ModelForm):
 
@@ -126,7 +121,7 @@ class ProductosForm(forms.ModelForm):
                 psicotropicos.save()
 
                 # Asigna la instancia de Estanteria al campo ubicacionE de Productos
-                producto.ubicacionF = psicotropicos
+                producto.ubicacionP = psicotropicos
 
                 # Guarda el objeto Productos en la base de datos si se especifica
                 if commit:
@@ -145,12 +140,7 @@ class ProductosForm(forms.ModelForm):
 
 
 
-# class ProductosCodigoForm(forms.ModelForm):
-#     codigo = forms.CharField(max_length=4)
 
-#     class Meta:
-#         model = Productos
-#         fields = ['codigo']
 
 class ProductosFormEditar(forms.ModelForm):
 
@@ -260,7 +250,7 @@ class ProductosFormEditar(forms.ModelForm):
                 psicotropicos.save()
 
                 # Asigna la instancia de Estanteria al campo ubicacionE de Productos
-                producto.ubicacionF = psicotropicos
+                producto.ubicacionP = psicotropicos
 
                 # Guarda el objeto Productos en la base de datos si se especifica
                 if commit:

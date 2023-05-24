@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 from django.shortcuts import render, HttpResponse, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+
 
 
 from Racks.models import  *
@@ -25,10 +25,9 @@ from django.contrib import messages
 from datetime import date, datetime, timedelta, time
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
-from django.utils.html import strip_tags
+#from django.utils.html import strip_tags para enviar texto sin formato
 from Racks.models import Productos, UltimaEjecucion
-from django.conf import settings
-from django.utils import timezone
+
 
 from decouple import config
 # Create your views here.
@@ -53,7 +52,7 @@ def mailVencimientos(request):
         productos = Productos.objects.filter(fecha_vencimiento__lte=maxVencimiento)
         if productos and start_time <= now <= end_time:
 
-            subject = "!IMPORTANTE! Vecimientos Proximos"
+            subject = "!IMPORTANTE! Vecimientos Proximos Deposito"
             html_message = render_to_string('vencimientosMail.html', {'productos':productos})
             plain_message = render_to_string('vencimientosMail.html', {'productos':productos})
             from_email =  config('USER_MAIL')
@@ -423,23 +422,7 @@ class Psicotropicos:
         return render(request, 'Psicotropicos/psicotropicos.html', ubicaciones)
     
     
-    def P1(request):
-        pallets = Psicotropico.objects.filter(ubicacion__startswith='P1')
-        ubicacionesP1 = {}
-        for pallet in pallets:
-            ubicacionesP1[pallet.ubicacion] = pallet.ocupacion
-        contexto ={'ubicacionesP1': ubicacionesP1}
-
-        return render(request, 'Estantes/P1.html', contexto)
     
-    def P2(request):
-        pallets = Psicotropico.objects.filter(ubicacion__startswith='P2')
-        ubicacionesP2 = {}
-        for pallet in pallets:
-            ubicacionesP2[pallet.ubicacion] = pallet.ocupacion
-        contexto ={'ubicacionesP2': ubicacionesP2}
-
-        return render(request, 'Estantes/P2.html', contexto)
 
 def pallet(request, ubicacion):
     print(ubicacion)
@@ -521,12 +504,12 @@ def ajustarContador(ubicacion):
 
 def eliminar_producto(request, iDproducto, ubicacion):
     try:
-        producto = Productos.objects.get(pk=iDproducto) #seleccionamos el objeto de la base de datos que queremos eliminar, buscamos el id
+        producto = Productos.objects.get(pk=iDproducto) 
         ajustarContador(ubicacion)
         producto.delete() #metodo delete 
         producto = Productos.objects.all()
         messages.success(request, "Producto eliminado correctamente")
-        return redirect(f'/pallet/{ubicacion}')#agregamos la variable msg para habilitar la alerta del mensaje cuando el alumno sea eliminado correctamente
+        return redirect(f'/pallet/{ubicacion}')
     except Exception as e:
         logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
         logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
@@ -540,7 +523,7 @@ def eliminar_producto(request, iDproducto, ubicacion):
 
 def editar_producto(request, iDproducto, ubicacion):
 
-    producto = Productos.objects.get(id=iDproducto) #filter para que me filtre por id y first para que me traiga el primer dato
+    producto = Productos.objects.get(id=iDproducto) 
     form = ProductosFormEditar(instance=producto, initial={'ubicacion': ubicacion,'mueble': producto.mueble})
     form.fields['fecha_vencimiento'].initial = producto.fecha_vencimiento.strftime('%d-%m-%Y')
     
