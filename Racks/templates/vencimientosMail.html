@@ -1,0 +1,59 @@
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/vencimientos.css' %}">
+
+
+
+<div class="vencimientos">
+<div class="alert alert-primary" style="background-color: rgba(128,128,128,0.08); width: 100%; margin-right: 2rem;" role="alert">
+            
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th scope="row" colspan="7" class="text-center tabla-titulo">Proximos Vencimientos</th>
+            </tr>
+            <tr>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Producto</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Codigo</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Fecha de Vencimiento</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Lote</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Cantidad</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Mueble</th>
+                <th scope="col" class="text-center" style="border-right: 2px solid black; border-bottom: 2px solid black;">Ubicacion</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for producto in productos %}
+
+            <tr>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.articulo}}</td>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.codigo }}</td>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.fecha_vencimiento }}</td>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.lote }}</td>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.cantidad }}</td>
+                <td class="text-center" style="border-right: 2px solid">{{ producto.mueble }}</td>
+                {% if producto.ubicacionF.ubicacion %}
+                        <td class="text-center" style="border-right: 2px solid">{{ producto.ubicacionF.ubicacion }}</td>
+                    {% elif producto.ubicacionE.ubicacion %}
+                        <td class="text-center" style="border-right: 2px solid">{{ producto.ubicacionE.ubicacion }}</td>
+                    {% elif producto.ubicacionP.ubicacion %}
+                        <td class="text-center" style="border-right: 2px solid">{{ producto.ubicacionP.ubicacion }}</td>
+                    {% elif producto.ubicacionS.ubicacion %}
+                        <td class="text-center" style="border-right: 2px solid">{{ producto.ubicacionS.ubicacion }}</td>
+                    {% endif %}
+            </tr>
+            {% endfor %}
+    </tbody>
+    <hr>
+</table>
+</div>
+</div>
+{% endblock %}

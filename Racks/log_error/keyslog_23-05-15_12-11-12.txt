@@ -1,0 +1,2 @@
+Ha ocurrido un Error al eliminar un producto
+Mensaje de error: producto.html

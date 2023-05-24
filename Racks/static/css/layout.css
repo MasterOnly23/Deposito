@@ -10,7 +10,7 @@ header{
 display: flex;  
 justify-content: space-evenly;  
 align-items: center;  
-height:60px;  
+height:4rem;  
 width:100%;  
 background:#16334b; 
 font-family: "Dr Ahorro"; 
@@ -18,11 +18,13 @@ font-family: "Dr Ahorro";
 .heading ul{  
 display:flex; 
 margin: auto; 
-margin-right: 7rem;
+/* margin-right: 7rem; */
+margin-right: 2rem;
 padding: 0;
 }
 .logo{
-    margin-right: 3rem;
+    /* margin-right: 3rem; */
+    margin-right: 1rem;
     padding: 0;
 }
 .logo img{
@@ -160,6 +162,7 @@ input{
     transition-duration: 0.8s;
     color: rgb(243, 168, 7);
 }
+
 
 @media screen and (max-width:1250px){  
     .heading ul li{  

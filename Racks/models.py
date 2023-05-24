@@ -9,7 +9,9 @@ muebles = (('M1','M1'),
             ('M2','M2'),
             ('M3','M3'),
             ('M4','M4'),
-            ('ACC','ACC'))
+            ('ACC','ACC'),
+            ('SUP','SUP'),
+            ('PSI','PSI'))
 
 class Mueble(models.Model):
     mueble = models.CharField(max_length=3, blank=True, null=True) 
@@ -100,6 +102,7 @@ class Productos(models.Model):
     class Meta:
         verbose_name_plural = "Productos"
 
+
 class Articulo(models.Model):
     codigo = models.CharField(max_length=5, null=True)
     articulo = models.CharField(max_length=60, null=False)
@@ -122,3 +125,11 @@ class Codigo(models.Model):
 
     def __str__(self):
         return self.codigo
+    
+
+
+class UltimaEjecucion(models.Model):
+    ultimaEjecucion = models.DateTimeField()
+
+    def __str__(self):
+        return str(self.ultimaEjecucion)

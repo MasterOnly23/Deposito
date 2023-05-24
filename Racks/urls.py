@@ -17,14 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos,buscar, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
+from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos, editar_producto, guardar_edicion, eliminar_producto, buscar, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
 
 urlpatterns = [
     path('', index, name='index'),
     path('busqueda/', buscar, name='buscar'),
     path('vencimientos/', vencimientos, name='vencimientos'),
     path('vencimientos/todos/', vencimientosTodos, name='vencimientos_todos'),
-    path('estantes/', Estantes.estantes, name='estantes'),
+    # path('estantes/', Estantes.estantes, name='estantes'),
     path('penetrables/', Penetrables.penetrables, name='penetrables'),
     path('suplementos/', Suplementos.suplementos, name='suplementos'),
     path('psicotropicos/', Psicotropicos.psicotropicos, name='psicotropicos'),
@@ -54,7 +54,11 @@ urlpatterns = [
     path('penetrable/F10/', Penetrables.F10, name='F10'),
     path('penetrable/F11/', Penetrables.F11, name='F11'),
     path('penetrable/F12/', Penetrables.F12, name='F12'),
+
     
+    #Suplementos
+    path('suplementos/S1/', Suplementos.S1, name='S1'),
+    path('suplementos/S2/', Suplementos.S2, name='S2'),
 
     #pallets
     path('pallet/<str:ubicacion>/', pallet, name='pallet'),
@@ -62,6 +66,10 @@ urlpatterns = [
 
     path('agregar/<str:ubicacion>/', nuevo_producto, name='nuevo_producto'),
     path('guardar/<str:ubicacion>/', guardar_producto, name='guardar_producto'),
+    path('eliminar/<int:iDproducto>/<str:ubicacion>/', eliminar_producto, name='eliminar_producto'),
+    path('editar/<int:iDproducto>/<str:ubicacion>/', editar_producto, name='editar_producto'),
+    path('guardarEdicion/<str:ubicacion>/<int:iDproducto>', guardar_edicion, name='guardar_edicion'),
+
 
 
 

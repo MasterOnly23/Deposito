@@ -35,6 +35,7 @@
                     <th scope="col">Cantidad</th>
                     <th scope="col">Lote</th>
                     <th scope="col">Ubicacion</th>
+                    <th scope="col"></th>
                     
 >
                 </tr>
@@ -43,13 +44,29 @@
             <tbody>
 
 
+                {% for producto in productos %}
+    
                 <tr>
-                    <td>GRIPABEN T DESCONGESTIVO X 5 GRS</td>
-                    <td>28/10/2023</td>
-                    <td>500000</td>
-                    <td>12345678911234567891</td>
-                    <td>Rack 1 - Posicion A2</td>
+                    <td>{{ producto.articulo}}</td>
+                    <td>{{ producto.fecha_vencimiento }}</td>
+                    <td>{{ producto.cantidad }}</td>
+                    {% if producto.ubicacionF.ubicacion %}
+                        <td>{{ producto.ubicacionF.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionF.ubicacion %}">Ir ></a></td>
+                    {% elif producto.ubicacionE.ubicacion %}
+                        <td>{{ producto.ubicacionE.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionE.ubicacion %}">Ir ></a></td>
+                    {% elif producto.ubicacionP.ubicacion %}
+                        <td>{{ producto.ubicacionP.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionP.ubicacion %}">Ir ></a></td>
+                    {% elif producto.ubicacionS.ubicacion %}
+                        <td>{{ producto.ubicacionS.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionS.ubicacion %}">Ir ></a></td>
+                    {% endif %}
+                    
                 </tr>
+                {% endfor %}
+                
 
         </tbody>
         <hr>

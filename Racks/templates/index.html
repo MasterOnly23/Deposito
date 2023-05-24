@@ -100,7 +100,7 @@
   
   function timerIncrement() {
       idleTime += 1;
-      if (idleTime >= 20) { // 2 minutos de inactividad
+      if (idleTime >= 30) { // 2 minutos de inactividad
           // Redirigir o recargar la página actual
           window.location.href = "{% url 'index' %}"
       }

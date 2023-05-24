@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from datetime import datetime
+from datetime import datetime, timedelta, date
+from dateutil.relativedelta import relativedelta
 
 from django.http import JsonResponse
 
@@ -10,7 +11,7 @@ from django.contrib.auth.models import User
 
 from Racks.models import  *
 
-from .forms import ProductosForm
+from .forms import ProductosForm, ProductosFormEditar
 
 from django.http import JsonResponse
 from django.views import View
@@ -19,17 +20,69 @@ from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
 
 from django.contrib import messages
+
+#mailvencimientos
+from datetime import date, datetime, timedelta, time
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.utils.html import strip_tags
+from Racks.models import Productos, UltimaEjecucion
+from django.conf import settings
+from django.utils import timezone
 # Create your views here.
 
 
+def mailVencimientos(request):
+    today = date.today()
+    now = datetime.today().time()
+    start_time = time(5, 0)  # Hora de inicio: 5 AM
+    end_time = time(6, 0)  # Hora de finalización: 6:00 AM
+    maxVencimiento = today + timedelta(days=120)
 
+    
+
+    # Verificar si la función ya se ejecutó hoy y dentro del rango horario
+    last_execution = UltimaEjecucion.objects.filter(ultimaEjecucion__date=today).first()
+    if last_execution:
+        return  # Salir de la función si ya se ejecutó hoy
+    
+    try:
+
+        productos = Productos.objects.filter(fecha_vencimiento__lte=maxVencimiento)
+        if productos and start_time <= now <= end_time:
+
+            subject = "!IMPORTANTE! Vecimientos Proximos"
+            html_message = render_to_string('vencimientosMail.html', {'productos':productos})
+            plain_message = render_to_string('vencimientosMail.html', {'productos':productos})
+            from_email = 'pruebacomprasinternas@gmail.com'
+            abastecimiento = 'abastecimiento@farmaciasdrahorro.com.ar'
+            compras =  'compras@farmaciasdrahorro.com.ar'
+
+            send_mail(subject, plain_message, from_email, ['pruebacomprasinternas@gmail.com'], html_message=html_message)
+            # Registrar la ejecución exitosa en la base de datos
+            UltimaEjecucion.objects.create(ultimaEjecucion=today)
+    
+    except Exception as e:
+        logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
+        logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
+        with open (logErrorFile, 'a') as log_file:
+            log_file.write("Ha ocurrido un error con el envio del mail: " + str(e))
 
 
 def index(request):
+
+    mailVencimientos(request)
+
+    
     suplementos = Suplemento.objects.all()
     penetrables = Penetrable.objects.all()
     psicotropicos = Psicotropico.objects.all()
     estanterias = Estanteria.objects.all()
+
+    fecha_hoy = datetime.today()#.strftime('%d-%m-%Y')
+    # fecha_hoy = datetime.strptime(fecha_hoy, '%d-%m-%Y')
+    fechaWarning = fecha_hoy + relativedelta(months=6)
+    productos = Productos.objects.filter(fecha_vencimiento__lte=fechaWarning).order_by('-fecha_vencimiento')
 
     ubicacionesSuplementos = {}
     ubicacionesPenetrables = {}
@@ -51,7 +104,8 @@ def index(request):
     ubicaciones = {'ubicacionesSuplementos':ubicacionesSuplementos, 
                    'ubicacionesPenetrables':ubicacionesPenetrables, 
                    'ubicacionesPsicotropicos':ubicacionesPsicotropicos, 
-                   'ubicacionesEstanterias':ubicacionesEstanterias}
+                   'ubicacionesEstanterias':ubicacionesEstanterias,
+                   'productos':productos}
 
 
     return render(request, 'planoP2.html', ubicaciones)
@@ -99,15 +153,15 @@ def buscar(request):
 
 class Estantes:
 
-    def estantes(request):
-        estanterias = Estanteria.objects.all()
-        ubicacionesEstanterias = {}
+    # def estantes(request):
+    #     estanterias = Estanteria.objects.all()
+    #     ubicacionesEstanterias = {}
 
-        for estanteria in estanterias:
-            ubicacionesEstanterias[estanteria.ubicacion] = estanteria.ocupacion
-        ubicaciones = {'ubicacionesEstanterias':ubicacionesEstanterias}
+    #     for estanteria in estanterias:
+    #         ubicacionesEstanterias[estanteria.ubicacion] = estanteria.ocupacion
+    #     ubicaciones = {'ubicacionesEstanterias':ubicacionesEstanterias}
 
-        return render(request, 'Estantes/estantes.html', ubicaciones)
+    #     return render(request, 'Estantes/estantes.html', ubicaciones)
 
     def E1(request):
         pallets = Estanteria.objects.filter(ubicacion__startswith='E1')
@@ -236,7 +290,7 @@ class Penetrables:
         ubicacionesF3 = {}
         for pallet in pallets:
             ubicacionesF3[pallet.ubicacion] = pallet.ocupacion
-        contexto ={'ubicacionesF1': ubicacionesF3}
+        contexto ={'ubicacionesF3': ubicacionesF3}
 
         return render(request, 'Penetrables/F3.html', contexto)
     
@@ -405,13 +459,107 @@ def guardar_producto(request, ubicacion):
         form = ProductosForm(request.POST, request.FILES,initial={'ubicacion':ubicacion})
         if form.is_valid():
             form.save()
+            messages.success(request, "Producto agregado correctamente")
             return redirect(f'/pallet/{ubicacion}')
     else:
-        form = ProductosForm(initial={'ubicacion':ubicacion})
-    return render(request, 'Formularios/agregar.html', {'form': form})
+        form = ProductosForm()
+    return render(request, 'Formularios/agregar.html', {'form': form, 'ubicacion':ubicacion})
 
 
-#FORMULARIOS
+def ajustarContador(ubicacion):
+
+    try:
+
+        if ubicacion.startswith('E'):
+                estanteria = Estanteria.objects.get(ubicacion=ubicacion)
+                if estanteria.contador <= 1:
+                    estanteria.ocupacion = '0'
+                    estanteria.contador = 0
+                    estanteria.save()
+                elif estanteria.contador > 1:
+                    estanteria.contador -= 1
+                    estanteria.save()
+
+        elif ubicacion.startswith('S'):
+                suplemento = Suplemento.objects.get(ubicacion=ubicacion)
+                if suplemento.contador <= 1:
+                    suplemento.ocupacion = '0'
+                    suplemento.contador = 0
+                    suplemento.save()
+                elif suplemento.contador > 1:
+                    suplemento.contador -= 1
+                    suplemento.save()
+        
+        elif ubicacion.startswith('F'):
+                penetrable = Penetrable.objects.get(ubicacion=ubicacion)
+                if penetrable.contador <= 1:
+                    penetrable.ocupacion = '0'
+                    penetrable.contador = 0
+                    penetrable.save()
+                elif penetrable.contador > 1:
+                    penetrable.contador -= 1
+                    penetrable.save()
+
+        elif ubicacion.startswith('P'):
+                psicotropico = Psicotropico.objects.get(ubicacion=ubicacion)
+                if psicotropico.contador <= 1:
+                    psicotropico.ocupacion = '0'
+                    psicotropico.contador = 0
+                    psicotropico.save()
+                elif psicotropico.contador > 1:
+                    psicotropico.contador -= 1
+                    psicotropico.save()
+
+    except Exception as e:
+        logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
+        logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
+        with open(logErrorFile, 'a') as log_file:
+            log_file.write("Error en ajuste del contador\n")
+            log_file.write("Mensaje de error: {}\n\n".format(str(e)))
+
+def eliminar_producto(request, iDproducto, ubicacion):
+    try:
+        producto = Productos.objects.get(pk=iDproducto) #seleccionamos el objeto de la base de datos que queremos eliminar, buscamos el id
+        ajustarContador(ubicacion)
+        producto.delete() #metodo delete 
+        producto = Productos.objects.all()
+        messages.success(request, "Producto eliminado correctamente")
+        return redirect(f'/pallet/{ubicacion}')#agregamos la variable msg para habilitar la alerta del mensaje cuando el alumno sea eliminado correctamente
+    except Exception as e:
+        logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
+        logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
+        with open(logErrorFile, 'a') as log_file:
+            log_file.write("Ha ocurrido un Error al eliminar un producto\n")
+            log_file.write("Mensaje de error: {}\n\n".format(str(e)))
+        messages.error(request, "Ha ocurrido un Error al eliminar un producto")
+        return redirect(f'/pallet/{ubicacion}')
+    
+
+
+def editar_producto(request, iDproducto, ubicacion):
+
+    producto = Productos.objects.get(id=iDproducto) #filter para que me filtre por id y first para que me traiga el primer dato
+    form = ProductosFormEditar(instance=producto, initial={'ubicacion': ubicacion,'mueble': producto.mueble})
+    form.fields['fecha_vencimiento'].initial = producto.fecha_vencimiento.strftime('%d-%m-%Y')
+    
+    return render(request, 'Formularios/editar.html', {'form': form, 'ubicacion':ubicacion, 'producto':producto})
+
+
+def guardar_edicion(request, ubicacion,iDproducto):
+    if request.method == 'POST':
+        form = ProductosFormEditar(request.POST, request.FILES,initial={'ubicacion':ubicacion})
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Producto actualizado correctamente")
+            producto = Productos.objects.get(id=iDproducto)
+            producto.delete()
+            return redirect(f'/pallet/{ubicacion}')
+    else:
+        form = ProductosFormEditar(initial={'ubicacion':ubicacion})
+    return render(request, 'Formularios/editar.html', {'form': form, 'ubicacion':ubicacion})
+
+
+#Vencimientos
 
 def vencimientos(request):
 
@@ -424,6 +572,7 @@ def vencimientosTodos(request):
     productos = Productos.objects.all().order_by('-fecha_vencimiento')
 
     return render(request, 'vencimientos2.html', {'productos':productos})
+
 
 
 

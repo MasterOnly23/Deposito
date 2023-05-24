@@ -13,7 +13,7 @@
 }
 .card{
     flex-basis: 20%;
-    height: 600px !important;
+    height: 650px !important;
     
 }
 .card-body{
@@ -77,4 +77,30 @@
 
 .texto-ubicacion{
     font-family: "Dr Ahorro"!important;
+    margin: 0 2rem 0 0 !important;
 }
+
+/*Notifications*/
+.notification {
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 1.8rem;
+        background: #007E33;
+        font-family: "Dr Ahorro";
+      }
+.success {
+        background: #43DC7E;
+        color: white;
+      }
+.error {
+        background: #AB3444;
+        color: white;
+        margin-bottom: 20px;
+      }
+.warning {
+        background:  #ffcc0065;
+        color: white;
+        margin-bottom: 20px;
+      }

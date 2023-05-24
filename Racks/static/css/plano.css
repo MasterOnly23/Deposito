@@ -1,271 +1,57 @@
-.todo{
-    margin-top: 1rem;
-
+.str10 {stroke:#727376;stroke-width:17.31;stroke-miterlimit:22.9256}
+.str6 {stroke:#737273;stroke-width:17.31;stroke-miterlimit:22.9256}
+.str1 {stroke:#737273;stroke-width:13.08;stroke-miterlimit:22.9256}
+.str7 {stroke:#BDBFC1;stroke-width:11.54;stroke-miterlimit:22.9256}
+.str3 {stroke:#848688;stroke-width:4.98;stroke-miterlimit:22.9256}
+.str0 {stroke:#373435;stroke-width:4.98;stroke-miterlimit:22.9256}
+.str4 {stroke:#6D6C6C;stroke-width:4.98;stroke-miterlimit:22.9256}
+.str2 {stroke:#727376;stroke-width:17.31;stroke-miterlimit:22.9256;stroke-dasharray:86.548747 51.929248}
+.str5 {stroke:#727376;stroke-width:17.31;stroke-miterlimit:22.9256;stroke-dasharray:173.097494 51.929248}
+.str9 {stroke:#727376;stroke-width:11.54;stroke-miterlimit:22.9256;stroke-dasharray:57.699165 57.699165}
+.str8 {stroke:#A9ABAE;stroke-width:6.53;stroke-miterlimit:22.9256;stroke-dasharray:65.287717 32.643858}
+.fil0 {fill:none}
+.fil7 {fill:none;fill-rule:nonzero}
+.fil10 {fill:#FEFEFE}
+.fil6 {fill:#F1F1F2}
+.fil1 {fill:#E6E7E8}
+.fil2 {fill:#D2D3D5}
+.fil9 {fill:#ED3237}
+.fil3 {fill:#6B809B}
+.fil4 {fill:#FEFEFE;fill-rule:nonzero}
+.fil5 {fill:#727376;fill-rule:nonzero}
+.fil8 {fill:#6D6C6C;fill-rule:nonzero}
+.ocupacion-1{
+    fill:#6B809B
 }
 
-.fondo{
-    border-color: black;
-    border-style: solid;
-    width: 250px;
-    height: 90px;
-    border-radius: 15px;
-    margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #d6d6d3;
-    flex-direction: column;
-    transition: background-color 0.8s ease; 
-
-}
-.plano-abajo{
-    width: 300px;
-}
-
-
-.fila{
-    display: flex;
-    flex-direction: row;
-    gap: 0.3rem;
-}
-
-.rack{
-
-    /* border-left: 6px double black;
-    border-right: 6px double black; */
-    height: 550px;
-    width: 55px;
-    margin: 0 0 2rem 0rem;
-    /* border-radius: 15px; */
-    background-color: #d6d6d3;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    transition: background-color 0.8s ease; 
-
-}
-.duplex{
-    margin-right: 2.5rem;
-    margin-left: 2.2rem;
-}
-
-.inicio{
-    margin-left: 2.5rem;
-    gap: 3rem;
-}
-
-.fondo h3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #16334b;
-    margin: 0;
-    transition: transform 0.8s ease; 
-}
-.link-cajitas{
-    max-width: fit-content;
-    display: flex;
-    margin: auto;
-    width: 250px;
-}
-
-.rack h3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #16334b;
-    margin: 0;
-    transition: transform 0.5s ease-in-out;
-}
-
-.vencimiento{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 4rem !important;
-    
-}
-
-.row{
-    --bs-gutter-x: 0 !important;
-}
-.col-lg-7{
-    margin: auto;
-}
-
-/* lugares del estante */
-
-.rack{
-    flex-direction: column;
-}
-.estante-plano{
-    border-left: 6px double black;
-    border-right: 6px double black;
-    border-bottom: 6px double black;
-    min-width: 100%;
-    height: 11%;
-    
-}
-.estante-sinborde{
-    border-bottom: 0;
-    /* border-left: 0;
-    border-right: 0;
-    background-color: white; */
-}
-
-.rack-doble-izq{
-    border-right: 4px dashed  black;
-}
-.rack-doble-der{
-    border-left: 4px dashed  black;
-
-}
-
-/* .cuadricula{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1px;
-}
-
-.lugar{
-    border: 1px solid black;
-    text-align: center;
-    padding: 20px;
-    font-size: 20px;
+.ocupacion-0{
+    fill: rgb(95, 143, 95)
 }
 
 
-.lugar1 {
-
-    grid-row: 1 / 2;
-    grid-column: 1 / 2;
-  }
-  
-  .lugar2 {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
-  }
-  
-  .lugar {
-    grid-row: 2 / 3;
-    grid-column: 1 / 2;
-  }
-  
-  .lugar4 {
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-  } */
-
-
-/* nombres */
-.titulo-plano{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #16334b;
-    margin: 2rem 0 0 0;
-}
-.titulo-plano h5{
-    font-size: 150%;
-    font-weight: bold;
-    margin: 0;
+.table-bordered > :not(caption) > * {
+    border-width: 50px 100px;
 }
 
-.titulo-cajita{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #16334b;
-    margin: 0;
-}
-.titulo-cajita h5{
-    font-size: 150%;
-    font-weight: bold;
-    margin: 0;
-    transition: transform 0.8s ease; 
-}
-
-.nombre-rack{
-    display: flex;
-    flex-direction: row;
-    gap: 3.2rem;
-    margin-left: 2rem;
+                /* Estilos para la barra de desplazamiento */
+                ::-webkit-scrollbar {
+                  width: 2px; /* Ancho de la barra */
+                  height: 2px;
+                }
+      
+                ::-webkit-scrollbar-thumb {
+                  background-color: #888; /* Color del "pulgador" de la barra */
+                  border-radius: 0.5px; /* Borde redondeado del "pulgador" */
+                }
+      
+                ::-webkit-scrollbar-track {
+                  background-color: #f1f1f1; /* Color de fondo de la barra */
+                }
+.titulo-tabla{
+    border-right: 3px solid #6D6C6C !important;
 }
 
-/* .rack:hover{
-    background-color: #16334b;
-    transition-duration: 0.5s;
-}
-.rack:hover h3{
-    color: white;
-    transform: scale(1.5);
-    transition-duration: 0.8s;
-}
-*/
-.fondo:hover{
-    background-color: #16334b;
-    transition-duration: 0.5s;
-}
-.fondo:hover h3, .fondo:hover h5{
-    color: white;
-    transform: scale(1.5);
-    transition-duration: 0.8s;
-} 
-
-@media (min-width: 1400px) {
-
-    
-}
-
-
-
-@media (max-width: 1200px){
-    .fondo{
-        width: 85%;
-    }
-    .fondo{
-        width: 250px;
-    }
-    .link-cajitas{
-        max-width: fit-content;
-        display: flex;
-        margin: auto;
-    }
-    .rack{
-        height: 450px;
-        width: 50px;
-        margin: 0 0 1rem 0rem;
-    }
-    .duplex{
-    margin-right: 2rem;
-    margin-left: 2rem;
-    }
-
-    .fila{
-    gap: 1rem;
-    margin-left: 2rem;
-}
-    .inicio{
-        gap: 2.7rem;
-
-    }
-
-    .plano, .vencimiento{
-        display: flex;
-        flex-direction: column !important;
-        width: 90% !important;
-    }
-    .col-lg-7{
-        margin: auto;
-    }
-    .col-12{
-        margin-left: 1rem;
-    }
-    .row{
-        gap: 4rem !important;
-    }
-    .titulo-plano h5{
-        margin: 0;
-    }
+.link-vencimientos:visited{
+    text-decoration: none;
+    color: black;
 }

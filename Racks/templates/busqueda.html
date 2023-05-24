@@ -21,35 +21,74 @@
 
 
 
-{% for articulo in articulos %}
+        {% for articulo in articulos %}
 
-<div class="card" style="width: 18rem;">
-    <div class="imagen">
-    <img src="{{producto.imagen.url}}" class="card-img-top" alt="pallet">
-    </div>
-    <div class="card-body contenedor-titulo">
-      <h5 class="card-title">{{ producto.articulo|upper }}</h5>
-    </div>
-    <ul class="list-group list-group-flush">
-      <li class="list-group-item">Fecha de Vencimiento: {{ producto.fecha_vencimiento }}</li>
-      <li class="list-group-item">Cantidad: {{ producto.cantidad }}</li>
-      <li class="list-group-item">Lote: {{ producto.lote }}</li>
-      <li class="list-group-item">Ubicacion: {{ ubicacion }}</li>
-    </ul>
-    <div class="card-body botones">
-       <a href="#"><button type="button" class="btn btn-warning">Editar</button></a>
-       <a href="#"><button type="button" class="btn btn-danger">Eliminar</button></a>
-    </div>
-  </div>
-
-{% endfor %}
+        <div class="card" style="width: 18rem;">
+            <div class="imagen">
+            <img src="{{articulo.imagen.url}}" class="card-img-top" alt="pallet">
+            </div>
+            <div class="card-body contenedor-titulo">
+              <h5 class="card-title">{{ articulo.articulo|upper }}</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Fecha de Vencimiento: {{ articulo.fecha_vencimiento }}</li>
+              <li class="list-group-item">Cantidad: {{ articulo.cantidad }}</li>
+              <li class="list-group-item">Lote: {{ articulo.lote }}</li>
+              <li class="list-group-item">Mueble: {{ articulo.mueble }}</li>
+              {% if articulo.ubicacionF.ubicacion %}
+                    <li class="list-group-item">Ubicacion: {{ articulo.ubicacionF.ubicacion }}</li>
+            </ul>
+            <div class="card-body botones">
+               <a href="{% url 'editar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionF.ubicacion  %}"><button type="button" class="btn btn-warning">Editar</button></a>
+               <a href="{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionF.ubicacion  %}" id="eliminar-btn"><button type="button" class="btn btn-danger">Eliminar</button></a>
+            </div>
+            <script>
+                var rutaEnlace = "{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionF.ubicacion  %}";
+              </script>
+            {% elif articulo.ubicacionE.ubicacion %}
+                    <li class="list-group-item">Ubicacion: {{ articulo.ubicacionE.ubicacion }}</li>
+                </ul>
+                <div class="card-body botones">
+                   <a href="{% url 'editar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionE.ubicacion  %}"><button type="button" class="btn btn-warning">Editar</button></a>
+                   <a href="{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionE.ubicacion  %}" id="eliminar-btn"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                </div>
+                <script>
+                    var rutaEnlace = "{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionE.ubicacion  %}";
+                  </script>
+                {% elif articulo.ubicacionP.ubicacion %}
+                    <li class="list-group-item">Ubicacion: {{ articulo.ubicacionP.ubicacion }}</li>
+                </ul>
+                <div class="card-body botones">
+                   <a href="{% url 'editar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionP.ubicacion  %}"><button type="button" class="btn btn-warning">Editar</button></a>
+                   <a href="{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionP.ubicacion  %}" id="eliminar-btn"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                </div>
+                <script>
+                    var rutaEnlace = "{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionP.ubicacion  %}";
+                  </script>
+                {% elif articulo.ubicacionS.ubicacion %}
+                    <li class="list-group-item">Ubicacion: {{ articulo.ubicacionS.ubicacion }}</li>
+                </ul>
+                <div class="card-body botones">
+                   <a href="{% url 'editar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionS.ubicacion  %}"><button type="button" class="btn btn-warning">Editar</button></a>
+                   <a href="{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionS.ubicacion  %}" id="eliminar-btn"><button type="button" class="btn btn-danger">Eliminar</button></a>
+                </div>
+                <script>
+                    var rutaEnlace = "{% url 'eliminar_producto' iDproducto=articulo.id ubicacion=articulo.ubicacionS.ubicacion  %}";
+                  </script>
+                
+                {% endif %}
+          </div>
+          
+        {% endfor %}
 </div>
 </div>
 
 {% else %}
 <div class="notification warning" id="usuario">
-    <p>Sin Resultados</p>
+    <p>No se encontraron productos cargados</p>
   </div>
 
 {% endif %}
+
+<script src="{% static 'js/confirm.js' %}"></script>
 {% endblock %}

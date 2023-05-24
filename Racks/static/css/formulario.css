@@ -74,3 +74,14 @@
 .form-group{
     margin-top: 1rem;
 }
+
+.select2-container--open .select2-results__option:hover {
+    cursor: pointer;
+    background-color: #6B809B;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    border: 1px solid #16334b !important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field:focus-visible{
+    border: 2px solid #16334b !important;
+}

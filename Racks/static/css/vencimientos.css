@@ -9,7 +9,14 @@
 }
 th, td{
     color: #16334b;
+
+    border-right: 2px solid black !important;
+
 }
 .ver-mas a{
     color: #6B809B !important;
+}
+.link-vencimientos:visited{
+    text-decoration: none;
+    color: black;
 }

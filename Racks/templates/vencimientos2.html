@@ -22,6 +22,7 @@
                 <th scope="col" class="text-center">Cantidad</th>
                 <th scope="col" class="text-center">Mueble</th>
                 <th scope="col" class="text-center">Ubicacion</th>
+                <th scope="col" class="text-center"></th>
                 
 >
             </tr>
@@ -39,14 +40,18 @@
                 <td>{{ producto.cantidad }}</td>
                 <td>{{ producto.mueble }}</td>
                 {% if producto.ubicacionF.ubicacion %}
-                    <td>{{ producto.ubicacionF.ubicacion }}</td>
-                {% elif producto.ubicacionE.ubicacion %}
-                    <td>{{ producto.ubicacionE.ubicacion }}</td>
-                {% elif producto.ubicacionP.ubicacion %}
-                    <td>{{ producto.ubicacionP.ubicacion }}</td>
-                {% elif producto.ubicacionS.ubicacion %}
-                    <td>{{ producto.ubicacionS.ubicacion }}</td>
-                {% endif %}
+                        <td>{{ producto.ubicacionF.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionF.ubicacion %}" class="link-vencimientos">Ir >></a></td>
+                    {% elif producto.ubicacionE.ubicacion %}
+                        <td>{{ producto.ubicacionE.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionE.ubicacion %}" class="link-vencimientos">Ir >></a></td>
+                    {% elif producto.ubicacionP.ubicacion %}
+                        <td>{{ producto.ubicacionP.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionP.ubicacion %}" class="link-vencimientos">Ir >></a></td>
+                    {% elif producto.ubicacionS.ubicacion %}
+                        <td>{{ producto.ubicacionS.ubicacion }}</td>
+                        <td><a href="{% url 'pallet' ubicacion=producto.ubicacionS.ubicacion %}" class="link-vencimientos">Ir >></a></td>
+                    {% endif %}
             </tr>
             {% endfor %}
     </tbody>

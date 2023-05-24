@@ -4,6 +4,14 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/pallets.css' %}">
 <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+
+{% if messages %}
+        {% for message in messages %}
+          <div class="notification {{ message.tags }}" id="usuario">
+            {{ message|upper }}
+          </div>
+        {% endfor %}
+        {% endif %}
 {% if productos %}
 
 
@@ -27,13 +35,17 @@
       <li class="list-group-item">Fecha de Vencimiento: {{ producto.fecha_vencimiento }}</li>
       <li class="list-group-item">Cantidad: {{ producto.cantidad }}</li>
       <li class="list-group-item">Lote: {{ producto.lote }}</li>
+      <li class="list-group-item">Mueble: {{ producto.mueble }}</li>
       <li class="list-group-item">Ubicacion: {{ ubicacion }}</li>
     </ul>
     <div class="card-body botones">
-       <a href="#"><button type="button" class="btn btn-warning">Editar</button></a>
-       <a href="#"><button type="button" class="btn btn-danger">Eliminar</button></a>
+       <a href="{% url 'editar_producto' iDproducto=producto.id ubicacion=ubicacion  %}"><button type="button" class="btn btn-warning">Editar</button></a>
+       <a href="{% url 'eliminar_producto' iDproducto=producto.id ubicacion=ubicacion  %}" id="eliminar-btn"><button type="button" class="btn btn-danger">Eliminar</button></a>
     </div>
   </div>
+  <script>
+    var rutaEnlace = "{% url 'eliminar_producto' iDproducto=producto.id ubicacion=ubicacion  %}";
+  </script>
 
 {% endfor %}
 </div>
@@ -50,5 +62,6 @@
 {% endif %}
 
 
+<script src="{% static 'js/confirm.js' %}"></script>
 
 {% endblock %}

@@ -32,10 +32,20 @@
         //     placeholder:"Seleccione un Codigo"
         // });
         $('#id_articulo').select2({
-            placeholder:"Seleccione un Articulo"
+            placeholder:"Seleccione un Articulo",
+            language: {
+                noResults: function() {
+                    return "No se encontraron resultados";
+                }
+            }
         });
         $('#id_mueble').select2({
-            placeholder:"Seleccione un Mueble"
+            placeholder:"Seleccione un Mueble",
+            language: {
+                noResults: function() {
+                    return "No se encontraron resultados";
+                }
+            }
         });
     });
   </script>
