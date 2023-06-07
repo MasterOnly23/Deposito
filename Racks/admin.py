@@ -7,6 +7,10 @@ class ArticulosAdmin(admin.ModelAdmin):
     list_display=['articulo']
     search_fields = [ 'articulo']
 
+class ImagenesAdmin(admin.ModelAdmin):
+    list_display=['articulo', 'imagen']
+    search_fields = [ 'articulo__articulo']
+
 class CodigoAdmin(admin.ModelAdmin):
     list_display=['codigo']
     search_fields = [ 'codigo']
@@ -56,5 +60,6 @@ admin.site.register(Psicotropico, DepositoPsicotropicoAdmin)
 admin.site.register(Suplemento, DepositoSuplementoAdmin)
 admin.site.register(Articulo, ArticulosAdmin)
 admin.site.register(Codigo, CodigoAdmin)
+admin.site.register(Imagenes, ImagenesAdmin)
 
 admin.site.register(Mueble,MuebleAdmin)

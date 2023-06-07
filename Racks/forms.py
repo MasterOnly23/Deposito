@@ -1,5 +1,5 @@
 from django import forms
-from .models import Productos, Mueble, Codigo, Articulo, Suplemento, Penetrable, Psicotropico, Estanteria
+from .models import Productos, Mueble, Codigo, Articulo, Suplemento, Penetrable, Psicotropico, Estanteria, Imagenes
 from django import forms
 from django_select2.forms import Select2Widget
 from datetime import datetime
@@ -51,6 +51,7 @@ class ProductosForm(forms.ModelForm):
         articulo = valor_articulo.articulo
         producto.codigo = codigo.strip()
         producto.articulo = articulo.strip()
+        
 
         try:
 

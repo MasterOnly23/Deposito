@@ -548,7 +548,7 @@ def guardar_edicion(request, ubicacion,iDproducto):
 
 def vencimientos(request):
 
-    productos = Productos.objects.all().order_by('-fecha_vencimiento')[:6]
+    productos = Productos.objects.all().order_by('-fecha_vencimiento')[:20]
 
     return render(request, 'vencimientos2.html', {'productos':productos})
 
@@ -558,6 +558,10 @@ def vencimientosTodos(request):
 
     return render(request, 'vencimientos2.html', {'productos':productos})
 
+def vencimientosMueble(request, mueble):
 
+    productos = Productos.objects.filter(mueble=mueble).order_by('-fecha_vencimiento')
+
+    return render(request, 'vencimientos2.html', {'productos':productos})
 
 

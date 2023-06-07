@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos, editar_producto, guardar_edicion, eliminar_producto, buscar, vencimientos, pallet,guardar_producto, nuevo_producto, vencimientosTodos
+from Racks.views import index, Estantes, Penetrables, Suplementos, Psicotropicos, editar_producto, guardar_edicion, eliminar_producto, buscar, vencimientos, vencimientosMueble, pallet,guardar_producto, nuevo_producto, vencimientosTodos
 
 urlpatterns = [
     path('', index, name='index'),
     path('busqueda/', buscar, name='buscar'),
     path('vencimientos/', vencimientos, name='vencimientos'),
     path('vencimientos/todos/', vencimientosTodos, name='vencimientos_todos'),
+    path('vencimientos/<str:mueble>/', vencimientosMueble, name='vencimientosMueble'),
     # path('estantes/', Estantes.estantes, name='estantes'),
     path('penetrables/', Penetrables.penetrables, name='penetrables'),
     path('suplementos/', Suplementos.suplementos, name='suplementos'),

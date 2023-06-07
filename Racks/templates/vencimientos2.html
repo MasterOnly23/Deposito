@@ -8,6 +8,22 @@
 <div class="vencimientos">
 <div class="alert alert-primary" style="background-color: rgba(128,128,128,0.08); width: 100%; margin-right: 2rem;" role="alert">
             
+    <li class="nav-item dropdown pt-3 lista-filtro">
+        <a class="nav-link dropdown-toggle btn btn-success dropdown-filtro" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Muebles
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'vencimientos'  %}">Todos</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'M1' %}">M1</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'M2' %}">M2</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'M3' %}">M3</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'M4' %}">M4</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'ACC' %}">ACCESORIOS</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'SUP' %}">SUPLEMENTOS</a></li>
+            <li><a class="dropdown-item" href="{% url 'vencimientosMueble' 'PSI' %}">PSICOTROPICOS</a></li>
+          </ul>
+    </li>
+
     <table class="table table-bordered">
 
         <thead>

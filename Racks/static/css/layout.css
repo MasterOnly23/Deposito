@@ -116,6 +116,7 @@ right:3px;
 }  
 .heading1 {  
 opacity:0;  
+pointer-events: none;
 }
 .menu{  
 visibility:hidden;  

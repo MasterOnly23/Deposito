@@ -93,7 +93,7 @@ class Productos(models.Model):
     cantidad = models.IntegerField()
     mueble = models.CharField(max_length=10, blank=True, null=True, choices=muebles) 
     fecha_modificacion = models.DateTimeField(auto_now=True)
-    imagen = models.ImageField(upload_to='img/img-productos', default="img/default_prod.png")
+    imagen = models.URLField(default="https://i.postimg.cc/1549gc7Y/default-prod.png", null=True)
     ubicacionF = models.ForeignKey(Penetrable, on_delete=models.CASCADE, blank=True, null=True, default=None, to_field='ubicacion')
     ubicacionE = models.ForeignKey(Estanteria, on_delete=models.CASCADE, blank=True, null=True, default=None, to_field='ubicacion')
     ubicacionP = models.ForeignKey(Psicotropico, on_delete=models.CASCADE, blank=True, null=True, default=None, to_field='ubicacion')
@@ -133,3 +133,9 @@ class UltimaEjecucion(models.Model):
 
     def __str__(self):
         return str(self.ultimaEjecucion)
+    
+
+
+class Imagenes(models.Model):
+    imagen = models.URLField(default="https://i.postimg.cc/1549gc7Y/default-prod.png", null=True)
+    articulo = models.ForeignKey(Articulo, on_delete=models.CASCADE, null=True)
