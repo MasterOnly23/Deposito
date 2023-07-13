@@ -1,0 +1,1 @@
+Ha ocurrido un error con el envio del mail: fromisoformat: argument must be strHa ocurrido un error con el envio del mail: fromisoformat: argument must be str

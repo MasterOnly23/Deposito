@@ -35,15 +35,16 @@ from decouple import config
 
 def mailVencimientos(request):
     today = date.today()
+    month = date.today().month
     now = datetime.today().time()
     start_time = time(5, 0)  # Hora de inicio: 5 AM
-    end_time = time(6, 0)  # Hora de finalización: 6:00 AM
+    end_time = time(6,0)  # Hora de finalización: 6:00 AM
     maxVencimiento = today + timedelta(days=150)
 
     
 
     # Verificar si la función ya se ejecutó hoy y dentro del rango horario
-    last_execution = UltimaEjecucion.objects.filter(ultimaEjecucion__date=today).first()
+    last_execution = UltimaEjecucion.objects.filter(ultimaEjecucion__month=month).first()
     if last_execution:
         return  # Salir de la función si ya se ejecutó hoy
     
