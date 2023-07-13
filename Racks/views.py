@@ -38,7 +38,7 @@ def mailVencimientos(request):
     now = datetime.today().time()
     start_time = time(5, 0)  # Hora de inicio: 5 AM
     end_time = time(6, 0)  # Hora de finalización: 6:00 AM
-    maxVencimiento = today + timedelta(days=120)
+    maxVencimiento = today + timedelta(days=150)
 
     
 
@@ -59,7 +59,7 @@ def mailVencimientos(request):
             abastecimiento = config('MAIL_ABASTECIMIENTO')
             compras =  config('MAIL_COMPRAS')
 
-            send_mail(subject, plain_message, from_email, [from_email], html_message=html_message)
+            send_mail(subject, plain_message, from_email, [from_email,abastecimiento,compras], html_message=html_message)
             # Registrar la ejecución exitosa en la base de datos
             UltimaEjecucion.objects.create(ultimaEjecucion=today)
     
@@ -83,7 +83,7 @@ def index(request):
     fecha_hoy = datetime.today()#.strftime('%d-%m-%Y')
     # fecha_hoy = datetime.strptime(fecha_hoy, '%d-%m-%Y')
     fechaWarning = fecha_hoy + relativedelta(months=6)
-    productos = Productos.objects.filter(fecha_vencimiento__lte=fechaWarning).order_by('-fecha_vencimiento')
+    productos = Productos.objects.filter(fecha_vencimiento__lte=fechaWarning).order_by('fecha_vencimiento')
 
     ubicacionesSuplementos = {}
     ubicacionesPenetrables = {}
@@ -548,19 +548,19 @@ def guardar_edicion(request, ubicacion,iDproducto):
 
 def vencimientos(request):
 
-    productos = Productos.objects.all().order_by('-fecha_vencimiento')[:20]
+    productos = Productos.objects.all().order_by('fecha_vencimiento')[:20]
 
     return render(request, 'vencimientos2.html', {'productos':productos})
 
 def vencimientosTodos(request):
 
-    productos = Productos.objects.all().order_by('-fecha_vencimiento')
+    productos = Productos.objects.all().order_by('fecha_vencimiento')
 
     return render(request, 'vencimientos2.html', {'productos':productos})
 
 def vencimientosMueble(request, mueble):
 
-    productos = Productos.objects.filter(mueble=mueble).order_by('-fecha_vencimiento')
+    productos = Productos.objects.filter(mueble=mueble).order_by('fecha_vencimiento')
 
     return render(request, 'vencimientos2.html', {'productos':productos})
 
