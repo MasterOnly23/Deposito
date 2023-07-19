@@ -63,12 +63,18 @@ def mailVencimientos(request):
             send_mail(subject, plain_message, from_email, [from_email,abastecimiento,compras], html_message=html_message)
             # Registrar la ejecución exitosa en la base de datos
             UltimaEjecucion.objects.create(ultimaEjecucion=today)
+            logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
+            logOKFile = 'Racks/log_ok/OkLog_{}.txt'.format(logFecha)
+            with open (logOKFile, 'a') as logOk_file:
+                logOk_file.write(f"el email se envio correctamente a las => {logFecha}")
+            return
     
     except Exception as e:
         logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
         logErrorFile = 'Racks/log_error/keyslog_{}.txt'.format(logFecha)
         with open (logErrorFile, 'a') as log_file:
             log_file.write("Ha ocurrido un error con el envio del mail: " + str(e))
+            return
 
 
 def index(request):
