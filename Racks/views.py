@@ -59,8 +59,10 @@ def mailVencimientos(request):
             from_email =  config('USER_MAIL')
             abastecimiento = config('MAIL_ABASTECIMIENTO')
             compras =  config('MAIL_COMPRAS')
+            gerente = config('MAIL_GERENTE')
+            sub_gerente = config('MAIL_SUB_GERENTE')
 
-            send_mail(subject, plain_message, from_email, [from_email,abastecimiento,compras], html_message=html_message)
+            send_mail(subject, plain_message, from_email, [from_email,abastecimiento,compras,gerente,sub_gerente], html_message=html_message)
             # Registrar la ejecución exitosa en la base de datos
             UltimaEjecucion.objects.create(ultimaEjecucion=today)
             logFecha = datetime.now().strftime('%y-%m-%d_%H-%M-%S')
