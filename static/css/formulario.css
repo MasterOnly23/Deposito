@@ -1,0 +1,87 @@
+.container-formulario{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 3rem 0 3rem;
+    height: 93.8vh;
+
+    background-color: #6B809B;
+    width: fit-content;
+    margin: auto;
+
+    font-family: "Dr Ahorro";
+
+}
+#id_articulo, #id_codigoCorto, #id_mueble{
+    margin: 0 !important;
+}
+.formulario{
+    margin: 0 2rem 0 2rem;
+    width: 32rem;
+    height: 45rem;
+}
+.select2-search__field{
+    margin: 0 !important;
+}
+.select2-selection--single{
+    height: 40px !important;
+}
+.select2-selection__rendered{
+    line-height: 40px !important;
+}
+.select2-selection__arrow{
+    height: 26px !important;
+    top: 5px !important;
+    right: 2px !important;
+
+}
+.g-3{
+        --bs-gutter-x: 0.5rem !important;
+}
+.row{
+    justify-content: center;
+}
+.form-label{
+    margin-bottom: 0 !important;
+}
+.container-formulario label{
+    font-size: 150%;
+    font-family: "Dr Ahorro";
+}
+
+.container-formulario input{
+    margin: 0 !important;
+}
+.guardar-container{
+    margin-top: 3rem;
+}
+.btn-guardar{
+   width: 9rem;
+   height: 4rem;
+   background-color: #16334b;
+   border-color: #6B809B;
+   font-size: 150%;
+   font-family: "Dr Ahorro";
+   transition: 0.8s;
+   margin: 2rem 0;
+}
+
+.btn-guardar:hover{
+    background-color: #074072 !important;
+    transform: scale(1.2) !important;
+    transition: 0.8s;
+}
+.form-group{
+    margin-top: 1rem;
+}
+
+.select2-container--open .select2-results__option:hover {
+    cursor: pointer;
+    background-color: #6B809B;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    border: 1px solid #16334b !important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field:focus-visible{
+    border: 2px solid #16334b !important;
+}

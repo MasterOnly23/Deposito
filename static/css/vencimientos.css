@@ -1,0 +1,40 @@
+.vencimientos{
+    font-family: "Dr Ahorro";
+    
+}
+.tabla-titulo{
+    font-size: 150%;
+    font-weight: bold;
+    
+}
+th, td{
+    color: #16334b;
+
+    border-right: 2px solid black !important;
+
+}
+.ver-mas a{
+    color: #6B809B !important;
+}
+.link-vencimientos:visited{
+    text-decoration: none;
+    color: black;
+}
+
+.lista-filtro{
+    list-style: none !important;
+    display: flex !important;
+    justify-content: end !important;
+    margin-right: 6rem;
+}
+
+.dropdown-filtro{
+    width: fit-content !important;
+    background-color: transparent !important;
+    padding: 5px !important;
+    border-color: #16334b !important;
+    color: #16334b !important;
+}
+.dropdown-filtro:hover{
+    color: #16334b !important;
+}

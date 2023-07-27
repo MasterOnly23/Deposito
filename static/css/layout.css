@@ -1,0 +1,296 @@
+html{
+    margin: 0;
+    padding: 0;
+
+}
+
+
+
+header{  
+display: flex;  
+justify-content: space-evenly;  
+align-items: center;  
+height:4rem;  
+width:100%;  
+background:#16334b; 
+font-family: "Dr Ahorro"; 
+}  
+.heading ul{  
+display:flex; 
+margin: auto; 
+/* margin-right: 7rem; */
+margin-right: 2rem;
+padding: 0;
+}
+.logo{
+    /* margin-right: 3rem; */
+    margin-right: 1rem;
+    padding: 0;
+}
+.logo img{
+    width: 12rem;
+
+}  
+
+/* .logo a{  
+color:white;  
+transition-duration: 1s;  
+font-weight: 800;  
+}  
+.logo a:hover{  
+color:rgb(240, 197, 6);  
+transition-duration: 1s;  
+}   */
+.heading ul li{  
+list-style: none; 
+
+}  
+.heading ul li a{  
+margin:5px;  
+text-decoration: none;  
+color:white;  
+font-weight: bold;  
+position:relative;  
+color:white;  
+margin:2px 14px;  
+font-size: 18px; 
+font-family: "Dr Ahorro"; 
+transition-duration: 1s;  
+} 
+
+.heading ul li a:active{  
+color:red;  
+}  
+.heading ul li a:hover{  
+color:rgb(243, 168, 7);  
+transition-duration: 1s;  
+}  
+.heading ul li a::before{  
+content:'';  
+height:2px;  
+width:0px;  
+position:absolute;  
+left:0;  
+bottom:0;  
+background-color: white;  
+transition-duration: 1s;  
+}  
+.heading ul li a:hover::before{  
+width:100%;   
+transition-duration: 1s;  
+background-color:rgb(243, 168, 7);  
+} 
+
+.vence{
+    color: yellow !important;
+} 
+
+.logo a{  
+color: white;  
+font-size: 2.1rem;  
+font-weight: 500;  
+text-decoration:none;  
+}  
+.label-buscar{
+    color: white;
+    margin: auto;
+    font-size: 125%;
+    font-family: "Dr Ahorro";
+}
+ion-icon{  
+width:1.8rem;  
+height:1.8rem;  
+background-color: white;  
+color:black;  
+}  
+ion-icon:hover{  
+cursor: pointer;  
+}  
+.search {  
+display:flex;  
+font-family: "Dr Ahorro"; 
+}  
+header  ion-icon{  
+position:relative;  
+right:0.2rem;  
+}  
+.heading1 {  
+opacity:0;  
+pointer-events: none;
+}
+.menu{  
+visibility:hidden;  
+}  
+.heading1 .ham:active{  
+color: red;  
+}  
+.ham,.close{  
+cursor:pointer;  
+}  
+
+
+/* buscar */
+ion-icon{  
+    margin: auto;
+    width:2.4rem;  
+    height:2.4rem;  
+    background-color: white;  
+    color:black;  
+  } 
+
+input{
+    margin: 0 0.5rem 0 1rem !important;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    height: 2.5rem;
+}
+
+.btn-buscar{
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0;
+    background-color: transparent;
+    border: 0;
+}
+.s{
+    transition-duration: 0.8s
+}
+
+.s:hover{
+    transform: scale(1.2);
+    border-radius: 1rem;
+    transition-duration: 0.8s;
+    color: rgb(243, 168, 7);
+}
+@media screen and (max-width:1300px){
+    header{
+        height: 3rem;
+    }  
+    .label-buscar{
+        font-size: 80%;
+        width: max-content;
+    }
+    .heading ul li a{
+        font-size: 80%;
+
+    } 
+    .heading ul li{
+        display: flex;
+        align-items: center;
+    }
+    .logo img{
+        width: 8rem;
+        margin-left: 2rem;
+    }
+
+    #buscar, #input{
+        height: 2rem;
+    }
+    .btn-buscar ion-icon{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    .menu{
+        width: 1px;
+    }
+
+}
+
+@media screen and (max-width:1250px){  
+    .heading ul li{  
+    display:none;  
+    } 
+    .ham:active {  
+    color:red;  
+    } 
+    .menu {  
+    display:flex;  
+    flex-direction: column;  
+    align-items: center;  
+    }    
+    .menu a ion-icon{  
+    position: absolute;  
+    } 
+
+    .menu ul{  
+    display:flex;  
+    flex-direction:column;  
+    position: absolute;  
+    width:100vw;  
+    height:100vh;  
+    background-color: black;  
+    left:0;  
+    top:0;  
+    z-index:11;  
+    align-items: center;  
+    justify-content: center;  
+    opacity:1;  
+    }  
+    .close{  
+    z-index:34;      
+    color:white;  
+    background-color: black;  
+    }  
+    .close:active{  
+    color:red;  
+    }  
+    .menu ul li{  
+        list-style: none;  
+        margin: 20px;  
+        border-top:3px solid white;  
+        width:80%;  
+        text-align:center;  
+        padding-top:10px;  
+    }  
+    .menu ul li a{  
+    text-decoration: none;  
+    padding-top: 10px;  
+    color:white;  
+    font-weight: 900;  
+    }  
+    .menu ul li a:hover{  
+        color:rgb(240, 197, 6);  
+    }
+    
+    .heading1{  
+    opacity: 1;  
+    position:relative;  
+    bottom:8px;
+    margin: auto;
+    }
+    .heading1 .ham{  
+    background-color: black;  
+    color:white;  
+    pointer-events: all;
+    }
+    .heading1 .ham{  
+    background-color: black;  
+    color:white;  
+    }
+    
+}
+
+@media screen and (max-width:550px){  
+.heading ul li{  
+display:none;  
+}  
+.heading1{  
+opacity: 1;  
+bottom:8px;  
+}  
+header{  
+height:250px;  
+flex-wrap: wrap;  
+display: flex;  
+flex-direction: column;  
+} 
+
+.close{  
+z-index:34;
+}  
+.heading1 .ham{  
+ 
+    pointer-events: all;
+}
+}

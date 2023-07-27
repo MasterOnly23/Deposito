@@ -1,0 +1,81 @@
+.str0 {stroke:#737273;stroke-width:1.32;stroke-miterlimit:22.9256}
+    .str14 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str15 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str16 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str8 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str9 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str10 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str29 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str30 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str31 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str2 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str3 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str4 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str23 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str24 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str25 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str5 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str6 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str7 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str1 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str17 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str18 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str19 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str11 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str12 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str13 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str26 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str27 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str28 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str20 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str21 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .str22 {stroke:black;stroke-width:0.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10}
+    .fil5 {fill:none}
+    .fil3 {fill:none;fill-rule:nonzero}
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:#E6E7E8}
+    .fil4 {fill:#737273}
+    .fil2 {fill:#FEFEFE;fill-rule:nonzero}
+
+
+    .cajita{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .text{
+        color: black;
+    }
+    .ocupacion-1{
+        
+        fill: #6B809B !important;
+    }
+    .ocupacion-0{
+        fill: rgb(95, 143, 95) !important;
+    }
+    .titulo{
+        display: flex;
+        justify-content: center;
+    }
+    .titulo h1{
+        font-size: 250%;
+        color: rgba(128, 128, 128, 0.6);
+        margin: 2rem 0 0 0;
+    }
+    .titulo h1 span{
+        font-weight: bold;
+        color: rgba(128, 128, 128, 0.8);
+    }
+    text{
+        fill: white;
+        transition: transform 0.8s ease;
+        font-family: "Dr Ahorro"; 
+    }
+    a:hover text {
+        fill: #16334b;
+        transition-duration: 0.8s;
+    }
+    .letra-estante{
+        fill: rgba(128, 128, 128, 0.6);
+    }

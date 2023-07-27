@@ -1,0 +1,106 @@
+.col-11{
+    margin: auto;
+    font-family: "Dr Ahorro";
+}
+.contenedor{
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 3rem !important;
+    flex-wrap: wrap;
+    gap: 1rem !important;
+}
+.card{
+    flex-basis: 20%;
+    height: 650px !important;
+    
+}
+.card-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.contenedor-titulo{
+    min-height: 160px;
+    
+}
+.card-title{
+    font-weight: bold;
+    font-size: 200%;
+}
+.imagen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card-img-top{
+    width: 200px !important;
+    height: 180px !important;
+}
+.botones{
+    justify-content: center;
+    align-items: end;
+    height: inherit !important;
+}
+.link-agregar{
+    width: 12rem;
+    background-color: #16334b !important;
+}
+.link-agregar:hover{
+    text-decoration: none;
+    background-color: #6B809B !important;
+}
+.link-agregar:hover span{
+    transform: scale(1.3);
+    transition: 0.8s;
+}
+#agregar-text{
+    font-family: "Dr Ahorro";
+    font-size: 100%;
+    transition: 0.8s;
+    
+}
+.contenedor-agregar{
+    margin: 3rem 0 0 2rem;
+}
+.contenedor-nuevo{
+    margin-top: 10rem;
+    display: grid;
+    place-items: center;
+}
+.btn-vacio{
+    width: 20rem;
+    height: 50px;
+}
+
+.texto-ubicacion{
+    font-family: "Dr Ahorro"!important;
+    margin: 0 2rem 0 0 !important;
+}
+
+/*Notifications*/
+.notification {
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 4px;
+        color: #fff;
+        font-size: 1.8rem;
+        background: #007E33;
+        font-family: "Dr Ahorro";
+      }
+.success {
+        background: #43DC7E;
+        color: white;
+      }
+.error {
+        background: #AB3444;
+        color: white;
+        margin-bottom: 20px;
+      }
+.warning {
+        background:  #ffcc0065;
+        color: white;
+        margin-bottom: 20px;
+      }
