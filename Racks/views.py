@@ -38,18 +38,20 @@ def mailVencimientos(request):
     month = date.today().month
     now = datetime.today().time()
     start_time = time(5, 0)  # Hora de inicio: 5 AM
-    end_time = time(6,0)  # Hora de finalización: 6:00 AM
+    end_time = time(15,0)  # Hora de finalización: 6:00 AM
     maxVencimiento = today + timedelta(days=150)
+    diasMail = 15
 
     
 
     # Verificar si la función ya se ejecutó hoy y dentro del rango horario
     last_execution = UltimaEjecucion.objects.filter(ultimaEjecucion__month=month).first()
-    if last_execution:
-        return  # Salir de la función si ya se ejecutó hoy
+    ultimosDias = (today - last_execution.ultimaEjecucion.date()).days
+    print(ultimosDias)
+    if ultimosDias<=diasMail:
+        return  # Salir de la función si ya se ejecutó 
     
     try:
-
         productos = Productos.objects.filter(fecha_vencimiento__lte=maxVencimiento)
         if productos and start_time <= now <= end_time:
 
