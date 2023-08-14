@@ -38,7 +38,7 @@ def mailVencimientos(request):
     month = date.today().month
     now = datetime.today().time()
     start_time = time(5, 0)  # Hora de inicio: 5 AM
-    end_time = time(15,0)  # Hora de finalización: 6:00 AM
+    end_time = time(8,0)  # Hora de finalización: 6:00 AM
     maxVencimiento = today + timedelta(days=150)
     diasMail = 15
 
