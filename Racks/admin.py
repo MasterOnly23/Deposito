@@ -50,6 +50,10 @@ class MuebleAdmin(admin.ModelAdmin):
     list_display=['mueble']
     list_filter = ['mueble']
 
+class UltimaEjecucionAdmin(admin.ModelAdmin):
+    list_display=['ultimaEjecucion']
+    list_filter = ['ultimaEjecucion']
+
     
 
 
@@ -61,5 +65,6 @@ admin.site.register(Suplemento, DepositoSuplementoAdmin)
 admin.site.register(Articulo, ArticulosAdmin)
 admin.site.register(Codigo, CodigoAdmin)
 admin.site.register(Imagenes, ImagenesAdmin)
+admin.site.register(UltimaEjecucion, UltimaEjecucionAdmin)
 
 admin.site.register(Mueble,MuebleAdmin)
